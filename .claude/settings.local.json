@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($p = \\(Get-Command python -ErrorAction SilentlyContinue\\); if \\($p\\) { \"python: $\\($p.Source\\)\"; python --version } else { \"python yok\" }; $n = \\(Get-Command node -ErrorAction SilentlyContinue\\); if \\($n\\) { \"node: $\\($n.Source\\)\"; node --version } else { \"node yok\" })",
+      "PowerShell(Start-Process \"http://localhost:8000/projeler.html\")"
+    ]
+  }
+}

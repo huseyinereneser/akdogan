@@ -1,0 +1,33 @@
+# Yönetim paneli — arama motorlarına kapalı + güvenlik
+
+# HTTPS zorunlu (mümkünse). PHP tarafında da ayrıca zorlanır (inc/on.php).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteCond %{HTTP_HOST} !=localhost
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "no-referrer"
+  # HSTS — yalnızca istek zaten HTTPS ise
+  Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
+</IfModule>
+
+# Dizin listelemeyi kapat
+Options -Indexes
+
+# PHP hata çıktısını gizle (varsa)
+<IfModule mod_php.c>
+  php_flag display_errors Off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag display_errors Off
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag display_errors Off
+</IfModule>

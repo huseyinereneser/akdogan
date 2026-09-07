@@ -1,0 +1,11 @@
+{
+  "_aciklama": "Site dil listesi. Yeni dil eklemek için: (1) buraya bir kayıt ekleyin (kisa = navbar kısaltması, adEn = açılır menüde İngilizce tam ad), (2) assets/i18n/<code>.json çeviri dosyasını oluşturun, (3) bayrak için assets/css/style.css içindeki .flag--<flag> kuralını ekleyin. 'tr' ve 'en' çevirileri sayfa HTML'inde gömülüdür (tr = varsayılan metin, en = data-en); diğer diller <code>.json dosyasından okunur.",
+  "varsayilan": "tr",
+  "diller": [
+    { "kod": "tr", "kisa": "TR", "ad": "Türkçe",  "adEn": "Turkish", "yon": "ltr", "bayrak": "tr", "htmlLang": "tr" },
+    { "kod": "en", "kisa": "EN", "ad": "English",  "adEn": "English", "yon": "ltr", "bayrak": "gb", "htmlLang": "en" },
+    { "kod": "ru", "kisa": "RU", "ad": "Русский",  "adEn": "Russian", "yon": "ltr", "bayrak": "ru", "htmlLang": "ru" },
+    { "kod": "ar", "kisa": "AR", "ad": "العربية",  "adEn": "Arabic",  "yon": "rtl", "bayrak": "sa", "htmlLang": "ar" },
+    { "kod": "de", "kisa": "DE", "ad": "Deutsch",  "adEn": "German",  "yon": "ltr", "bayrak": "de", "htmlLang": "de" }
+  ]
+}

@@ -1,0 +1,23 @@
+<!-- #BOOT -->
+<script>
+/* Tema + dil tercihini boyamadan önce uygula (yanıp sönmeyi önler).
+   Dil listesinden bağımsızdır: yalnızca localStorage'daki kod ve yön
+   bilgisini uygular; geçerlilik denetimini main.js yapar. */
+(function () {
+  try {
+    var d = document.documentElement, t = null, l = null, dir = null;
+    try {
+      t = localStorage.getItem("akd-theme");
+      l = localStorage.getItem("akd-lang");
+      dir = localStorage.getItem("akd-dir");
+    } catch (e) {}
+    if (t !== "dark" && t !== "light") {
+      t = (window.matchMedia && matchMedia("(prefers-color-scheme:dark)").matches) ? "dark" : "light";
+    }
+    d.setAttribute("data-theme", t);
+    d.setAttribute("lang", /^[a-z]{2,3}$/.test(l || "") ? l : "tr");
+    d.setAttribute("dir", dir === "rtl" ? "rtl" : "ltr");
+  } catch (e) {}
+})();
+</script>
+<!-- /#BOOT -->

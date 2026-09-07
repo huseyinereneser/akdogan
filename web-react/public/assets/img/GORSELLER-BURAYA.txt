@@ -1,0 +1,77 @@
+GÖRSEL KLASÖRÜ — Akdoğan Turizm
+================================
+
+Gerçek fotoğrafları bu klasöre koyun ve HTML dosyalarındaki
+placeholder bloklarını <img> etiketiyle değiştirin.
+
+Önerilen dosyalar ve boyutlar
+-----------------------------
+logo.png            [HAZIR]  Header logosu — 440×148, şeffaf zemin
+logo-light.png      [HAZIR]  Footer (koyu zemin) sürümü — gri kısım beyaz
+favicon.png         [HAZIR]  Sekme ikonu — logodaki üçgen amblem, 64×64
+og-image.jpg                  Sosyal medya paylaşım görseli — 1200×630
+
+hero.jpg                      Ana sayfa hero görseli — 1920×1080
+hakkimizda.jpg                Ana sayfa "Hakkımızda" görseli — 1200×900
+hikaye.jpg                    Hakkımızda sayfası dikey görsel — 900×1200
+
+hakkimizda-hero.jpg           Hakkımızda sayfa başlığı — 1920×800
+hizmetler-hero.jpg            Hizmetler sayfa başlığı — 1920×800
+galeri-hero.jpg               Galeri sayfa başlığı — 1920×800
+iletisim-hero.jpg             İletişim sayfa başlığı — 1920×800
+
+personel-servis.jpg           Hizmet görselleri — 1200×900
+ogrenci-servis.jpg
+vip-transfer.jpg
+arac-kiralama.jpg
+sehir-ici.jpg
+turizm.jpg
+
+galeri/01.jpg ... galeri/12.jpg   Galeri görselleri — 1200×900
+
+
+Placeholder'ı gerçek görselle değiştirme
+----------------------------------------
+1) Normal görsel alanlarında:
+
+   ÖNCE:
+   <div class="ph ph--ratio-4-3" data-label="Görsel · ..."></div>
+
+   SONRA:
+   <img src="assets/img/personel-servis.jpg" alt="Personel servis aracı" loading="lazy">
+
+2) Hero ve sayfa başlıklarında (tam ekranı kaplayan görseller):
+
+   ÖNCE:
+   <div class="ph ph--dark" data-label="Hero görseli · ..."></div>
+
+   SONRA:
+   <img src="assets/img/hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover">
+
+3) Logo — ZATEN EKLENDİ. Değiştirmek isterseniz SADECE _partials/ içinde:
+
+   _partials/header.html ve _partials/footer.html dosyalarında
+
+   ÖNCE:
+   <span class="logo-ph">LOGO</span>
+
+   SONRA:
+   <img src="assets/img/logo.svg" alt="Akdoğan Turizm" height="44">
+
+   Ardından: node tools/sync-partials.js
+
+   Not: Logonuz zaten şirket adını içeriyorsa, yanındaki
+   <span class="logo-text">...</span> bloğunu silebilirsiniz.
+
+4) Yeni sayfalar için ek görseller:
+   projeler-hero.jpg, referanslar-hero.jpg, kadromuz-hero.jpg (1920×800)
+   ekip/*.jpg (800×800 kare), haberler/*.jpg (1200×675)
+   referanslar/*.png (müşteri logoları — yayınlamadan önce izin alın)
+
+
+Performans ipuçları
+-------------------
+- Fotoğrafları web için sıkıştırın (JPEG kalite ~75, ya da WebP kullanın).
+- Hero görselleri 300 KB'ı, galeri görselleri 200 KB'ı geçmesin.
+- Hero dışındaki tüm görsellere loading="lazy" ekleyin.
+- Her görsele anlamlı bir alt="" metni yazın (SEO ve erişilebilirlik için).

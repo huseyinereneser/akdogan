@@ -1,0 +1,64 @@
+{
+    "hizmetler": [
+        {
+            "id": "personel-tasimaciligi",
+            "sira": 1,
+            "gorsel": "assets/img/personel-ic-temsili.jpg",
+            "tr": {
+                "baslik": "Personel Taşımacılığı",
+                "ozet": "Kamu ve özel kuruluşlara yönelik, yasal yükümlülüklere tam uyumlu düzenli personel servis hizmeti. Vardiya saatlerinize göre planlanan güzergâhlar.",
+                "detay": "Personelinizin işe geliş ve gidişini bir lojistik problemi olmaktan çıkarıyoruz. Toplanma noktalarını, vardiya saatlerini ve trafik yoğunluğunu birlikte değerlendirerek en verimli güzergâh planını oluşturuyor; sefer takibini merkezi olarak yönetiyoruz."
+            },
+            "en": {
+                "baslik": "Personnel Transport",
+                "ozet": "Regular staff shuttle services for public and private institutions, fully compliant with legal obligations. Routes planned around your shift hours.",
+                "detay": "We take your staff's daily commute off your plate. Pickup points, shift times and traffic patterns are assessed together to build the most efficient route plan, with trips monitored centrally."
+            }
+        },
+        {
+            "id": "ogrenci-tasimaciligi",
+            "sira": 2,
+            "gorsel": "assets/img/ogrenci-servisi-temsili.jpg",
+            "tr": {
+                "baslik": "Öğrenci Taşımacılığı",
+                "ozet": "Okul öncesi ve tüm kademelerdeki öğrencilerin evden okula, okuldan eve güvenli ve konforlu taşınması. Rehber personel eşliğinde hizmet.",
+                "detay": "Öğrenci taşımacılığı, taşıdığımız sorumluluğun en yüksek olduğu alandır. Araç seçiminden sürücü ve rehber personel belirlenmesine kadar her adımı güvenlik önceliğiyle kurguluyor; velilerle düzenli iletişim kanalı açık tutuyoruz."
+            },
+            "en": {
+                "baslik": "Student Transport",
+                "ozet": "Safe, comfortable home-to-school transport for pre-school and all grade levels, with a chaperone on board.",
+                "detay": "Student transport is where our responsibility is highest. From vehicle selection to choosing drivers and chaperones, every step is built around safety, and we keep an open communication channel with parents."
+            }
+        },
+        {
+            "id": "vip-transfer",
+            "sira": 3,
+            "gorsel": "assets/img/vip-temsili.jpg",
+            "tr": {
+                "baslik": "VIP Transfer",
+                "ozet": "Son model, özel üretim araç filomuzla havalimanı karşılama, misafir ve üst düzey personel transferi. Protokol standartlarında hizmet.",
+                "detay": "Yurt dışından gelen misafirinizi karşılamak, üst düzey yöneticinizi toplantıya yetiştirmek ya da bir delegasyonu şehir içinde ağırlamak gerektiğinde; kurumunuzun temsil standardına uygun bir transfer hizmeti sunuyoruz."
+            },
+            "en": {
+                "baslik": "VIP Transfer",
+                "ozet": "Airport meet-and-greet and guest / executive transfers with our late-model, purpose-built fleet. Protocol-grade service.",
+                "detay": "When you need to welcome an overseas guest, get an executive to a meeting on time, or host a delegation around the city, we provide a transfer service that matches your organisation's standard of representation."
+            }
+        },
+        {
+            "id": "arac-kiralama",
+            "sira": 4,
+            "gorsel": "assets/img/arac-kiralama-temsili.jpg",
+            "tr": {
+                "baslik": "Araç Kiralama",
+                "ozet": "Günlük, aylık ve uzun dönem araç kiralama seçenekleri. Sürücülü veya sürücüsüz, kurumsal filo ihtiyaçlarına uygun esnek çözümler.",
+                "detay": "Filo yatırımı yapmadan, ihtiyaç duyduğunuz süre boyunca ihtiyaç duyduğunuz araca sahip olun. Bakım, sigorta ve takip süreçlerini biz yönetelim; siz işinize odaklanın."
+            },
+            "en": {
+                "baslik": "Vehicle Rental",
+                "ozet": "Daily, monthly and long-term rental options. With or without a driver — flexible solutions for corporate fleet needs.",
+                "detay": "Get the vehicle you need for as long as you need it, without a fleet investment. Let us handle maintenance, insurance and tracking so you can focus on your business."
+            }
+        }
+    ]
+}

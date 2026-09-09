@@ -1,0 +1,119 @@
+{
+    "galeri": [
+        {
+            "id": "g01",
+            "sira": 1,
+            "dosya": "assets/img/fleet-temsili.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Araç filomuzdan bir görünüm",
+            "baslik_en": "A view from our fleet"
+        },
+        {
+            "id": "g02",
+            "sira": 2,
+            "dosya": "assets/img/personel-ic-temsili.jpg",
+            "kategori": "personel",
+            "baslik_tr": "Sabah vardiyası personel servisi",
+            "baslik_en": "Morning-shift staff shuttle"
+        },
+        {
+            "id": "g03",
+            "sira": 3,
+            "dosya": "assets/img/ogrenci-servisi-temsili.jpg",
+            "kategori": "ogrenci",
+            "baslik_tr": "Okul servisi güzergâhı",
+            "baslik_en": "School service route"
+        },
+        {
+            "id": "g04",
+            "sira": 4,
+            "dosya": "assets/img/vip-temsili.jpg",
+            "kategori": "vip",
+            "baslik_tr": "Havalimanı karşılama hizmeti",
+            "baslik_en": "Airport meet-and-greet"
+        },
+        {
+            "id": "g05",
+            "sira": 5,
+            "dosya": "assets/img/fleet-2-temsili.jpg",
+            "kategori": "filo",
+            "baslik_tr": "0 km araçlarımız",
+            "baslik_en": "Our zero-km vehicles"
+        },
+        {
+            "id": "g07",
+            "sira": 7,
+            "dosya": "assets/img/personel-yolcu-temsili.jpg",
+            "kategori": "personel",
+            "baslik_tr": "Toplanma noktası düzeni",
+            "baslik_en": "Pickup point setup"
+        },
+        {
+            "id": "g08",
+            "sira": 8,
+            "dosya": "assets/img/arac-kiralama-temsili.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Periyodik araç bakımı",
+            "baslik_en": "Scheduled vehicle maintenance"
+        },
+        {
+            "id": "g09",
+            "sira": 9,
+            "dosya": "assets/img/vip-ic-temsili.jpg",
+            "kategori": "vip",
+            "baslik_tr": "Özel üretim VIP araç iç mekân",
+            "baslik_en": "Purpose-built VIP interior"
+        },
+        {
+            "id": "g10",
+            "sira": 10,
+            "dosya": "assets/img/ogrenci-servisi-2-temsili.jpg",
+            "kategori": "ogrenci",
+            "baslik_tr": "Okul önünde servis filosu",
+            "baslik_en": "Shuttle fleet outside the school"
+        },
+        {
+            "id": "g11",
+            "sira": 11,
+            "dosya": "assets/img/ofis-toplanti-temsili.jpg",
+            "kategori": "organizasyon",
+            "baslik_tr": "Etkinlik ulaşım planlaması",
+            "baslik_en": "Event transport planning"
+        },
+        {
+            "id": "g12",
+            "sira": 12,
+            "dosya": "assets/img/road-temsili.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Garajımızdan bir kare",
+            "baslik_en": "A shot from our depot"
+        }
+    ],
+    "kategoriler": [
+        {
+            "anahtar": "filo",
+            "ad_tr": "Araç Filosu",
+            "ad_en": "Fleet"
+        },
+        {
+            "anahtar": "personel",
+            "ad_tr": "Personel Servisi",
+            "ad_en": "Staff Shuttle"
+        },
+        {
+            "anahtar": "ogrenci",
+            "ad_tr": "Öğrenci Servisi",
+            "ad_en": "Student Shuttle"
+        },
+        {
+            "anahtar": "vip",
+            "ad_tr": "VIP Transfer",
+            "ad_en": "VIP Transfer"
+        },
+        {
+            "anahtar": "organizasyon",
+            "ad_tr": "Organizasyon",
+            "ad_en": "Organisation"
+        }
+    ]
+}

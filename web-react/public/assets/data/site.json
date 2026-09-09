@@ -1,5 +1,5 @@
 {
-    "guncelleme": "2026-09-06T07:41:24+00:00",
+    "guncelleme": "2026-09-09T18:20:30+00:00",
     "iletisim": {
         "telefon": "0262 642 91 03",
         "gsm": "0546 881 46 71",
@@ -17,14 +17,92 @@
         "linkedin": ""
     },
     "seo": {
-        "baslik_tr": "Akdoğan Turizm | Kurumsal Ulaşım ve Turizm Hizmetleri — Gebze / Kocaeli",
-        "baslik_en": "Akdoğan Turizm | Corporate Transport & Tourism Services — Gebze / Kocaeli",
-        "aciklama_tr": "2010'dan bu yana personel taşımacılığı, öğrenci servisi, VIP transfer, araç kiralama ve turizm organizasyonları. Gebze / Kocaeli merkezli, modern ve 0 km araç filosu.",
-        "aciklama_en": "Since 2010: personnel transport, student shuttle, VIP transfer, vehicle rental and tour organisations. Gebze / Kocaeli based, with a modern zero-km fleet."
+        "baslik_tr": "Akdoğan Turizm | Kurumsal Ulaşım Hizmetleri — Gebze / Kocaeli",
+        "baslik_en": "Akdoğan Turizm | Corporate Transport Services — Gebze / Kocaeli",
+        "aciklama_tr": "2010'dan bu yana personel taşımacılığı, öğrenci servisi, VIP transfer ve araç kiralama. Gebze / Kocaeli merkezli, modern ve 0 km araç filosu.",
+        "aciklama_en": "Since 2010: personnel transport, student shuttle, VIP transfer and vehicle rental. Gebze / Kocaeli based, with a modern zero-km fleet."
     },
-    "genel": {
-        "varsayilan_tema": "sistem"
+    "genel": [],
+    "gorunum": {
+        "accent": "#e31e25",
+        "accent_dark": "#b8171d",
+        "radius": 4
     },
+    "gorseller": {
+        "page_belgeler": "assets/img/ofis-toplanti-temsili.jpg",
+        "page_galeri": "assets/img/fleet-temsili.jpg",
+        "page_haberler": "assets/img/road-2-temsili.jpg",
+        "page_hakkimizda": "assets/img/fleet-2-temsili.jpg",
+        "page_hesap": "assets/img/ofis-toplanti-temsili.jpg",
+        "page_hizmetler": "assets/img/road-2-temsili.jpg",
+        "page_iletisim": "assets/img/road-2-temsili.jpg",
+        "page_insan_kaynaklari": "assets/img/surucu-arac-temsili.jpg",
+        "page_kadromuz": "assets/img/ofis-toplanti-temsili.jpg",
+        "page_kvkk": "assets/img/ekip-ofis-temsili.jpg",
+        "page_projeler": "assets/img/fleet-temsili.jpg",
+        "page_referanslar": "assets/img/ekip-ofis-temsili.jpg",
+        "page_videolar": "assets/img/fleet-2-temsili.jpg",
+        "page_yorumlar": "assets/img/ekip-ofis-temsili.jpg",
+        "hero": "assets/img/hero-temsili.jpg",
+        "hakkimizda": "assets/img/fleet-temsili.jpg"
+    },
+    "marka": {
+        "logo": "assets/img/logo.png"
+    },
+    "menu": {
+        "anasayfa": {
+            "tr": "Ana Sayfa",
+            "en": "Home",
+            "href": "index.html",
+            "aktif": true
+        },
+        "kurumsal": {
+            "tr": "Kurumsal",
+            "en": "Corporate",
+            "href": "kurumsal.html",
+            "aktif": true
+        },
+        "hizmetler": {
+            "tr": "Hizmetler",
+            "en": "Services",
+            "href": "hizmetler.html",
+            "aktif": true
+        },
+        "projeler": {
+            "tr": "Projeler",
+            "en": "Projects",
+            "href": "projeler.html",
+            "aktif": true
+        },
+        "referanslar": {
+            "tr": "Referanslar",
+            "en": "References",
+            "href": "referanslar.html",
+            "aktif": true
+        },
+        "medya": {
+            "tr": "Medya",
+            "en": "Media",
+            "href": "medya.html",
+            "aktif": true
+        },
+        "iletisim": {
+            "tr": "İletişim",
+            "en": "Contact",
+            "href": "iletisim.html",
+            "aktif": true
+        }
+    },
+    "bolumler": {
+        "anasayfa.hero": true,
+        "anasayfa.hakkimizda": true,
+        "anasayfa.hizmetler": true,
+        "anasayfa.neden": true,
+        "anasayfa.istatistik": true,
+        "anasayfa.surec": true,
+        "anasayfa.cta": true
+    },
+    "seo_sayfalar": [],
     "hizmetler": [
         {
             "id": "personel-tasimaciligi",
@@ -85,36 +163,6 @@
                 "ozet": "Daily, monthly and long-term rental options. With or without a driver — flexible solutions for corporate fleet needs.",
                 "detay": "Get the vehicle you need for as long as you need it, without a fleet investment. Let us handle maintenance, insurance and tracking so you can focus on your business."
             }
-        },
-        {
-            "id": "sehir-ici-tasimacilik",
-            "sira": 5,
-            "gorsel": "assets/img/sehirici-temsili.jpg",
-            "tr": {
-                "baslik": "Şehir İçi Yolcu Taşımacılığı",
-                "ozet": "0 km araçlarımızla şehir içi yolcu taşımacılığında modern ve kaliteli hizmet. Grup transferleri ve özel organizasyon ulaşımı.",
-                "detay": "Grup transferleri, fuar ve etkinlik ulaşımı, şantiye ve tesis arası geçişler… Şehir içinde toplu ulaşım gerektiren her senaryoda konforlu ve zamanında bir çözüm sunuyoruz."
-            },
-            "en": {
-                "baslik": "Intercity & Local Passenger Transport",
-                "ozet": "Modern, quality local passenger transport with our zero-km vehicles. Group transfers and event transport.",
-                "detay": "Group transfers, fair and event transport, moves between sites and facilities — for any scenario that needs collective transport within the city, we provide a comfortable, on-time solution."
-            }
-        },
-        {
-            "id": "turizm-organizasyonlari",
-            "sira": 6,
-            "gorsel": "assets/img/turizm-temsili.jpg",
-            "tr": {
-                "baslik": "Turizm Organizasyonları",
-                "ozet": "Kurumsal geziler, tur programları ve etkinlik ulaşımı. Planlamadan uygulamaya kadar tüm süreci sizin adınıza yönetiyoruz.",
-                "detay": "Personel motivasyon gezisi, bayi toplantısı ya da kültür turu… Programın kurgulanmasından araç planlamasına, mola noktalarından zaman çizelgesine kadar tüm süreci sizin adınıza yönetiyoruz."
-            },
-            "en": {
-                "baslik": "Tour Organisations",
-                "ozet": "Corporate trips, tour programmes and event transport. We manage the whole process on your behalf, from planning to delivery.",
-                "detay": "Staff incentive trips, dealer meetings or culture tours — from shaping the programme to vehicle planning, rest stops and the timetable, we manage the entire process for you."
-            }
         }
     ],
     "galeri": [
@@ -157,14 +205,6 @@
             "kategori": "filo",
             "baslik_tr": "0 km araçlarımız",
             "baslik_en": "Our zero-km vehicles"
-        },
-        {
-            "id": "g06",
-            "sira": 6,
-            "dosya": "assets/img/ekip-ofis-temsili.jpg",
-            "kategori": "organizasyon",
-            "baslik_tr": "Kurumsal gezi organizasyonu",
-            "baslik_en": "Corporate trip organisation"
         },
         {
             "id": "g07",
@@ -260,6 +300,41 @@
                     "ad": "Ana sayfa 'Hakkımızda' özeti",
                     "tr": "Akdoğan Turizm, 2010 yılında Gebze'de kurulduğu günden bu yana kamu ve özel sektör kuruluşlarına kurumsal ulaşım hizmeti sunuyor.",
                     "en": "Since it was founded in Gebze in 2010, Akdoğan Turizm has provided corporate transport services to public and private sector organisations."
+                },
+                "hakkimizda_baslik": {
+                    "ad": "Ana sayfa hakkımızda başlığı",
+                    "tr": "Ulaşımı bir hizmet değil, bir sorumluluk olarak görüyoruz.",
+                    "en": "We see transport not as a service, but as a responsibility."
+                },
+                "hizmetler_baslik": {
+                    "ad": "Ana sayfa hizmetler başlığı",
+                    "tr": "Kurumsal ulaşımın altı ana başlığı",
+                    "en": "Six key areas of corporate transport"
+                },
+                "hizmetler_metin": {
+                    "ad": "Ana sayfa hizmetler açıklaması",
+                    "tr": "İhtiyacınıza göre kurgulanan, uçtan uca planlanan ve tek noktadan yönetilen ulaşım çözümleri.",
+                    "en": "Transport solutions built around your needs, planned end-to-end and managed from a single point."
+                },
+                "neden_baslik": {
+                    "ad": "Ana sayfa neden başlığı",
+                    "tr": "Kurumların bize güvenmesinin dört nedeni",
+                    "en": "Four reasons organisations trust us"
+                },
+                "surec_baslik": {
+                    "ad": "Ana sayfa süreç başlığı",
+                    "tr": "Üç adımda hizmete başlıyoruz",
+                    "en": "We start service in three steps"
+                },
+                "cta_baslik": {
+                    "ad": "Ana sayfa teklif başlığı",
+                    "tr": "Kurumunuz için ulaşım planını birlikte kuralım.",
+                    "en": "Let's build a transport plan for your organisation together."
+                },
+                "cta_metin": {
+                    "ad": "Ana sayfa teklif açıklaması",
+                    "tr": "İhtiyacınızı anlatın, size özel bir çözüm ve fiyat teklifiyle en kısa sürede dönüş yapalım.",
+                    "en": "Tell us what you need, and we'll get back to you as soon as possible with a tailored solution and quote."
                 }
             }
         },
@@ -270,6 +345,16 @@
                     "ad": "Giriş paragrafı",
                     "tr": "Akdoğan Turizm, 2010 yılında Kocaeli'nin sanayi merkezi Gebze'de, kurumların ulaşım ihtiyacına gerçek bir çözüm sunmak amacıyla kuruldu.",
                     "en": "Akdoğan Turizm was founded in 2010 in Gebze, the industrial hub of Kocaeli, to offer a real solution to organisations' transport needs."
+                },
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "2010'dan bugüne kesintisiz yolculuk",
+                    "en": "An unbroken journey since 2010"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Gebze'de küçük bir filoyla başlayan hikayemiz, bugün her gün binlerce kişiyi güvenle taşıyan kurumsal bir yapıya dönüştü.",
+                    "en": "Our story began with a small fleet in Gebze and has grown into a corporate organisation that safely transports thousands of people every day."
                 },
                 "misyon": {
                     "ad": "Misyon",
@@ -290,6 +375,196 @@
                     "ad": "İletişim sayfası giriş metni",
                     "tr": "Ulaşım ihtiyacınızı anlatın; en kısa sürede size özel bir çözüm ve fiyat teklifiyle dönüş yapalım.",
                     "en": "Tell us what you need; we will get back to you with a tailored solution and quote as soon as possible."
+                },
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Bize ulaşın",
+                    "en": "Get in touch"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Ulaşım ihtiyacınızı anlatın; en kısa sürede size özel bir çözüm ve fiyat teklifiyle dönüş yapalım.",
+                    "en": "Tell us what you need; we will get back to you with a tailored solution and quote as soon as possible."
+                }
+            }
+        },
+        "belgeler": {
+            "etiket_tr": "Belgeler",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Mevzuata tam uyum",
+                    "en": "Full compliance with regulations"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Yetki belgelerimiz, kalite standartlarımız ve mevzuata uyum yaklaşımımız.",
+                    "en": "Our authorisation documents, quality standards and compliance approach."
+                }
+            }
+        },
+        "galeri": {
+            "etiket_tr": "Galeri",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Filomuzdan ve sahadan kareler",
+                    "en": "Scenes from our fleet and operations"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Araçlarımızı, ekiplerimizi ve sahadaki operasyonlarımızı yakından görün.",
+                    "en": "Take a closer look at our vehicles, teams and operations."
+                }
+            }
+        },
+        "haberler": {
+            "etiket_tr": "Haberler",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Bizden haberler",
+                    "en": "News from us"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Operasyonlarımızdan, filomuzdan ve sektörden güncel gelişmeler.",
+                    "en": "Updates from our operations, fleet and industry."
+                }
+            }
+        },
+        "hesap-numaralarimiz": {
+            "etiket_tr": "Hesap Numaralarımız",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Ödeme bilgileri",
+                    "en": "Payment information"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Teklif ve hizmet ödemeleriniz için banka hesap bilgilerimiz.",
+                    "en": "Our bank account details for your service and quotation payments."
+                }
+            }
+        },
+        "hizmetler": {
+            "etiket_tr": "Hizmetler",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Kurumsal ulaşımda uçtan uca çözüm",
+                    "en": "End-to-end corporate transport solutions"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "İhtiyacınıza uygun servis, filo ve operasyon yönetimi.",
+                    "en": "Service, fleet and operations management tailored to your needs."
+                }
+            }
+        },
+        "insan-kaynaklari": {
+            "etiket_tr": "İnsan Kaynakları",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Ekibimize katılın",
+                    "en": "Join our team"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Güvenli ve kaliteli ulaşım için birlikte çalışalım.",
+                    "en": "Let's work together for safe and quality transport."
+                }
+            }
+        },
+        "kadromuz": {
+            "etiket_tr": "Kadromuz",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "İşi yürüten ekip",
+                    "en": "The team behind the work"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Deneyimli sürücülerimiz ve operasyon ekibimizle yanınızdayız.",
+                    "en": "Our experienced drivers and operations team are here for you."
+                }
+            }
+        },
+        "kvkk": {
+            "etiket_tr": "KVKK",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Kişisel Verilerin Korunması",
+                    "en": "Protection of personal data"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Kişisel verilerin korunmasına ilişkin bilgilendirme metnimiz.",
+                    "en": "Our information notice regarding the protection of personal data."
+                }
+            }
+        },
+        "projeler": {
+            "etiket_tr": "Projeler",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Sahada yürüttüğümüz taşıma projeleri",
+                    "en": "Transport projects we run in the field"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Farklı ölçeklerde kurumlara özel planlanan ulaşım operasyonları.",
+                    "en": "Transport operations planned for organisations of different scales."
+                }
+            }
+        },
+        "referanslar": {
+            "etiket_tr": "Referanslar",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Bize güvenen kurumlar",
+                    "en": "Organisations that trust us"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Uzun soluklu iş birlikleriyle büyüyen referans ağımız.",
+                    "en": "Our reference network, built through long-term partnerships."
+                }
+            }
+        },
+        "videolar": {
+            "etiket_tr": "Videolar",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Tanıtım videolarımız",
+                    "en": "Our introduction videos"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Hizmetlerimizi ve çalışma kültürümüzü videolarla keşfedin.",
+                    "en": "Discover our services and work culture through videos."
+                }
+            }
+        },
+        "yorumlar": {
+            "etiket_tr": "Yorumlar",
+            "alanlar": {
+                "hero_baslik": {
+                    "ad": "Sayfa başlığı",
+                    "tr": "Bizimle çalışanlar ne diyor?",
+                    "en": "What do our clients say?"
+                },
+                "hero_metin": {
+                    "ad": "Sayfa giriş metni",
+                    "tr": "Birlikte çalıştığımız kurumların deneyimleri.",
+                    "en": "Experiences from the organisations we work with."
                 }
             }
         }

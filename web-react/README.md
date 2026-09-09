@@ -1,7 +1,7 @@
 # Akdoğan Turizm — React sürümü
 
-Mevcut statik site (`../`) React'a taşınıyor. Bu klasör bağımsızdır; eski site
-çalışmaya devam eder.
+Sitenin tamamı bu klasördedir (Vite + React). Eski statik HTML sürümü ve
+kökteki PHP paneli kaldırıldı; yerine buradaki `admin/` klasörü geçti.
 
 ## Yığın
 
@@ -22,9 +22,42 @@ npm run build     # tsc + vite build → dist/
 npm run preview   # dist/ önizleme
 ```
 
-Formlar (`gonder.php`) ve panelin ürettiği `assets/data/site.json` için
-geliştirmede PHP sunucusu gerekir; `vite.config.ts` içindeki `proxy`
-`http://localhost:8000` adresine yönlendirir (`php -S localhost:8000` eski kökte).
+### Formlar
+
+Varsayılan hedef **Netlify Forms**'tur (arka uç gerektirmez). Form tanımları
+`public/__forms.html` içinde; React formu FormData'yı `/` adresine POST eder ve
+`form-name` ile eşleştirir. Netlify panelinde gönderimler _Forms_ sekmesinde
+görünür; e-posta bildirimi oradan açılır.
+
+Yerelde eski `gonder.php` ile test için `.env.example` → `.env` kopyalayıp
+`VITE_FORMS_MODE=php` yapın.
+
+## Yönetim paneli (`admin/`)
+
+PHP tabanlı, veritabanısız içerik paneli. **Yalnızca yerelde çalışır** (Netlify
+statik hosting PHP çalıştırmaz) — içerik burada düzenlenir, sonuç `git` ile
+yayınlanır.
+
+```powershell
+cd "web-react/admin"
+php -S localhost:8000        # -t verme; boşluklu yol PHP'nin dahili sunucusunu bozuyor
+```
+
+Sonra: **http://localhost:8000/** → giriş ekranı.
+
+- Panel doğrudan `web-react/public/assets/data/site.json` dosyasını ve
+  `web-react/public/assets/img/` görsellerini düzenler (yol ayarı:
+  `admin/inc/on.php` → `SITE_KOK`).
+- React uygulaması bu `site.json`'u çalışma anında `fetch` eder
+  (`src/lib/site.ts`), yani panelde kaydettiğin an `npm run dev` sayfaları
+  güncellenir.
+- **Yayınlama akışı:** panelde düzenle → `git add -A && git commit` →
+  `git push` → Netlify yeniden derler.
+- `admin/veri/` içindeki içerik dosyaları (`ayarlar/hizmetler/galeri/sayfalar.json`)
+  git'te izlenir; hassas dosyalar (`users.json`, `talepler/`, `gunluk.jsonl`,
+  kilitler) `.gitignore` ile hariç tutulur.
+- Panel verisi `site.json` ile eşitlenmiştir (4 hizmet, 11 galeri). İçerik
+  dosyalarını elden düzenlersen ikisini tutarlı tut.
 
 ## Taşıma durumu
 
@@ -34,7 +67,8 @@ geliştirmede PHP sunucusu gerekir; `vite.config.ts` içindeki `proxy`
 | Dil menüsü — hover ile açılma + açılış animasyonu | ✅ tamam |
 | i18n çekirdeği (context, sözlük yükleme, RTL, rakamlar) | ✅ tamam |
 | 16 sayfanın tamamı (ana sayfa + 15 alt sayfa + 404) | ✅ tamam |
-| Formlar (teklif / İK başvuru / yorum) → `gonder.php` AJAX | ✅ tamam |
+| Formlar (teklif / İK başvuru / yorum) → Netlify Forms (veya `gonder.php`) | ✅ tamam |
+| `_redirects` (SPA fallback), `robots.txt`, `sitemap.xml` → `public/` | ✅ tamam |
 | Galeri filtre + ışık kutusu, SSS akordiyon, dosya yükleme alanı | ✅ tamam |
 | DE/RTL doğrulaması (Playwright ekran görüntüleri, konsol hatası yok) | ✅ tamam |
 | CMS köprüsü (`icerik.js` → `site.json` içerik enjeksiyonu) | ⏳ sonraki adım |

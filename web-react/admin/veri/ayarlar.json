@@ -1,0 +1,101 @@
+{
+    "iletisim": {
+        "telefon": "0262 642 91 03",
+        "gsm": "0546 881 46 71",
+        "whatsapp": "0532 051 36 06",
+        "eposta": "info@akdoganturizm.com",
+        "adres": "Köşklüçesme Mah. Topçular Cad. No: 66/A, Gebze / Kocaeli",
+        "saatler_tr": "Hafta içi 09.00 – 19.00 · Cumartesi 09.30 – 19.00 · Pazar kapalı",
+        "saatler_en": "Weekdays 09:00 – 19:00 · Saturday 09:30 – 19:00 · Sunday closed"
+    },
+    "sosyal": {
+        "facebook": "",
+        "instagram": "",
+        "x": "",
+        "youtube": "",
+        "linkedin": ""
+    },
+    "seo": {
+        "baslik_tr": "Akdoğan Turizm | Kurumsal Ulaşım Hizmetleri — Gebze / Kocaeli",
+        "baslik_en": "Akdoğan Turizm | Corporate Transport Services — Gebze / Kocaeli",
+        "aciklama_tr": "2010'dan bu yana personel taşımacılığı, öğrenci servisi, VIP transfer ve araç kiralama. Gebze / Kocaeli merkezli, modern ve 0 km araç filosu.",
+        "aciklama_en": "Since 2010: personnel transport, student shuttle, VIP transfer and vehicle rental. Gebze / Kocaeli based, with a modern zero-km fleet."
+    },
+    "genel": {},
+    "gorunum": {
+        "accent": "#e31e25",
+        "accent_dark": "#b8171d",
+        "radius": 4
+    },
+    "gorseller": {
+        "page_belgeler": "assets/img/ofis-toplanti-temsili.jpg",
+        "page_galeri": "assets/img/fleet-temsili.jpg",
+        "page_haberler": "assets/img/road-2-temsili.jpg",
+        "page_hakkimizda": "assets/img/fleet-2-temsili.jpg",
+        "page_hesap": "assets/img/ofis-toplanti-temsili.jpg",
+        "page_hizmetler": "assets/img/road-2-temsili.jpg",
+        "page_iletisim": "assets/img/road-2-temsili.jpg",
+        "page_insan_kaynaklari": "assets/img/surucu-arac-temsili.jpg",
+        "page_kadromuz": "assets/img/ofis-toplanti-temsili.jpg",
+        "page_kvkk": "assets/img/ekip-ofis-temsili.jpg",
+        "page_projeler": "assets/img/fleet-temsili.jpg",
+        "page_referanslar": "assets/img/ekip-ofis-temsili.jpg",
+        "page_videolar": "assets/img/fleet-2-temsili.jpg",
+        "page_yorumlar": "assets/img/ekip-ofis-temsili.jpg",
+        "hero": "assets/img/hero-temsili.jpg",
+        "hakkimizda": "assets/img/fleet-temsili.jpg"
+    },
+    "menu": {
+        "anasayfa": {
+            "tr": "Ana Sayfa",
+            "en": "Home",
+            "href": "index.html",
+            "aktif": true
+        },
+        "kurumsal": {
+            "tr": "Kurumsal",
+            "en": "Corporate",
+            "href": "kurumsal.html",
+            "aktif": true
+        },
+        "hizmetler": {
+            "tr": "Hizmetler",
+            "en": "Services",
+            "href": "hizmetler.html",
+            "aktif": true
+        },
+        "projeler": {
+            "tr": "Projeler",
+            "en": "Projects",
+            "href": "projeler.html",
+            "aktif": true
+        },
+        "referanslar": {
+            "tr": "Referanslar",
+            "en": "References",
+            "href": "referanslar.html",
+            "aktif": true
+        },
+        "medya": {
+            "tr": "Medya",
+            "en": "Media",
+            "href": "medya.html",
+            "aktif": true
+        },
+        "iletisim": {
+            "tr": "İletişim",
+            "en": "Contact",
+            "href": "iletisim.html",
+            "aktif": true
+        }
+    },
+    "bolumler": {
+        "anasayfa.hero": true,
+        "anasayfa.hakkimizda": true,
+        "anasayfa.hizmetler": true,
+        "anasayfa.neden": true,
+        "anasayfa.istatistik": true,
+        "anasayfa.surec": true,
+        "anasayfa.cta": true
+    }
+}

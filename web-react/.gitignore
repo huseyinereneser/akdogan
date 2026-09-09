@@ -3,3 +3,18 @@ dist
 dist-ssr
 *.local
 .DS_Store
+
+# Yerel yönetim paneli (admin/) — hassas çalışma zamanı verisi git'e girmez.
+# İçerik dosyaları (ayarlar/hizmetler/galeri/sayfalar.json) bilerek izlenir.
+admin/veri/users.json
+admin/veri/kurulum.kilit
+admin/veri/kurtarma.izin
+admin/veri/otokontrol.json
+admin/veri/talep-sayac.json
+admin/veri/gunluk.jsonl
+admin/veri/kanari.txt
+admin/veri/kilit/
+admin/veri/talepler/
+admin/veri/talepler-silinen/
+admin/veri/surumler/
+admin/veri/_yedek-esitleme-oncesi/

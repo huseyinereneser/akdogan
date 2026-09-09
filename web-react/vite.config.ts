@@ -1,9 +1,26 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "node:url";
 
+// "/admin" (sonda / yok) isteğini "/admin/"e 301'le — aksi halde PHP panelinin
+// göreli yönlendirmeleri (login.php → /login.php) React uygulamasına düşüyor.
+const adminSlash = (): Plugin => ({
+  name: "admin-trailing-slash",
+  configureServer(server) {
+    server.middlewares.use((req, res, next) => {
+      if (req.url === "/admin") {
+        res.statusCode = 301;
+        res.setHeader("Location", "/admin/");
+        res.end();
+        return;
+      }
+      next();
+    });
+  },
+});
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), adminSlash()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

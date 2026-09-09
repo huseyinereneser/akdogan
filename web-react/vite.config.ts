@@ -11,9 +11,12 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    // gonder.php ve panelin ürettiği JSON'lar için: geliştirmede mevcut
-    // PHP sunucusuna vekil (php -S localhost:8000 ya da Apache).
+    // Geliştirmede PHP tarafı ayrı bir sunucuda çalışır; şu komutla başlat:
+    //   cd web-react && php -S localhost:8000
+    // Aşağıdaki vekil sayesinde panel http://localhost:5173/admin/ üzerinden,
+    // form gönderimi de /gonder.php üzerinden aynı origin'de erişilebilir.
     proxy: {
+      "/admin": "http://localhost:8000",
       "/gonder.php": "http://localhost:8000",
     },
   },

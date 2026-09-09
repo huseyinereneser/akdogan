@@ -38,12 +38,18 @@ PHP tabanlı, veritabanısız içerik paneli. **Yalnızca yerelde çalışır** 
 statik hosting PHP çalıştırmaz) — içerik burada düzenlenir, sonuç `git` ile
 yayınlanır.
 
+İki sunucu birlikte çalışır: `npm run dev` (React) + PHP (panel). Panelin
+başlatılması:
+
 ```powershell
-cd "web-react/admin"
+cd "web-react"
 php -S localhost:8000        # -t verme; boşluklu yol PHP'nin dahili sunucusunu bozuyor
 ```
 
-Sonra: **http://localhost:8000/** → giriş ekranı.
+Erişim:
+- **http://localhost:5173/admin/** — `npm run dev` çalışırken; Vite `/admin` ve
+  `/gonder.php` isteklerini `:8000`'e vekiller (`vite.config.ts`).
+- **http://localhost:8000/admin/** — doğrudan (Vite kapalıyken de çalışır).
 
 - Panel doğrudan `web-react/public/assets/data/site.json` dosyasını ve
   `web-react/public/assets/img/` görsellerini düzenler (yol ayarı:

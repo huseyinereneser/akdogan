@@ -3,8 +3,3 @@ dist/
 dist-ssr/
 *.local
 *.tsbuildinfo
-
-# Panel: kimlik bilgileri, form talepleri ve diğer çalışma zamanı verileri
-panel-9f3a7e21/veri/*
-!panel-9f3a7e21/veri/index.html
-!panel-9f3a7e21/veri/.htaccess

@@ -7,10 +7,12 @@ import { SectionHead } from "@/components/SectionHead";
 import { Faq, type FaqItem } from "@/components/Faq";
 import { CtaSection } from "@/components/CtaSection";
 import type { Pair } from "@/i18n/I18nProvider";
+import { siteAsset, useSiteData, pageText } from "@/lib/site";
 
 interface ServiceDetail {
   id: string;
   no: Pair;
+  badge: Pair;
   title: Pair;
   short: Pair;
   lead: Pair;
@@ -24,6 +26,7 @@ const SERVICES: ServiceDetail[] = [
   {
     id: "personel-tasimaciligi",
     no: { tr: "HİZMET 01", en: "SERVICE 01" },
+    badge: { tr: "Personel Taşıma", en: "Personnel Transport" },
     title: { tr: "Personel Taşımacılığı", en: "Personnel Transport" },
     short: {
       tr: "Vardiya düzenine göre planlanan, mevzuata uygun kurumsal servis hizmeti.",
@@ -61,6 +64,7 @@ const SERVICES: ServiceDetail[] = [
   {
     id: "ogrenci-tasimaciligi",
     no: { tr: "HİZMET 02", en: "SERVICE 02" },
+    badge: { tr: "Öğrenci Taşıma", en: "Student Transport" },
     title: { tr: "Öğrenci Taşımacılığı", en: "Student Transport" },
     short: {
       tr: "Okul öncesi ve tüm kademelerde güvenli, rehber personel eşliğinde servis.",
@@ -98,6 +102,7 @@ const SERVICES: ServiceDetail[] = [
   {
     id: "vip-transfer",
     no: { tr: "HİZMET 03", en: "SERVICE 03" },
+    badge: { tr: "VIP Transfer", en: "VIP Transfer" },
     title: { tr: "VIP Transfer Hizmetleri", en: "VIP Transfer Services" },
     short: {
       tr: "Havalimanı karşılama ve misafir transferinde protokol standardı.",
@@ -130,11 +135,12 @@ const SERVICES: ServiceDetail[] = [
       },
     ],
     img: "/assets/img/vip-temsili.jpg",
-    imgAlt: { tr: "Siyah VIP transfer minibüsü (temsili görsel)", en: "A black VIP transfer minibus (representative image)" },
+    imgAlt: { tr: "Havalimanında bagaj yüklenen VIP transfer minibüsü", en: "VIP transfer minibus loading luggage at the airport" },
   },
   {
     id: "arac-kiralama",
     no: { tr: "HİZMET 04", en: "SERVICE 04" },
+    badge: { tr: "Araç Kiralama", en: "Vehicle Rental" },
     title: { tr: "Araç Kiralama", en: "Vehicle Rental" },
     short: {
       tr: "Günlük, aylık ve uzun dönem; sürücülü veya sürücüsüz esnek kiralama.",
@@ -169,88 +175,14 @@ const SERVICES: ServiceDetail[] = [
     img: "/assets/img/arac-kiralama-temsili.jpg",
     imgAlt: { tr: "Sıra hâlinde park etmiş kiralık araçlar (temsili görsel)", en: "Rental vehicles parked in a row (representative image)" },
   },
-  {
-    id: "sehir-ici-tasimacilik",
-    no: { tr: "HİZMET 05", en: "SERVICE 05" },
-    title: { tr: "Şehir İçi Yolcu Taşımacılığı", en: "Intercity & Local Passenger Transport" },
-    short: {
-      tr: "0 km araçlarla şehir içi grup transferleri ve organizasyon ulaşımı.",
-      en: "Local group transfers and event transport with our zero-km vehicles.",
-    },
-    lead: {
-      tr: "0 km araçlarımızla şehir içi yolcu taşımacılığında modern ve kaliteli hizmet.",
-      en: "Modern, quality local passenger transport with our zero-km vehicles.",
-    },
-    body: {
-      tr: "Grup transferleri, fuar ve etkinlik ulaşımı, şantiye ve tesis arası geçişler… Şehir içinde toplu ulaşım gerektiren her senaryoda konforlu ve zamanında bir çözüm sunuyoruz.",
-      en: "Group transfers, fair and event transport, moves between sites and facilities — for any scenario that needs collective transport within the city, we provide a comfortable, on-time solution.",
-    },
-    checks: [
-      {
-        tr: "<strong>Yeni araç filosu.</strong> Düzenli yenilenen, bakımlı ve konforlu araçlar.",
-        en: "<strong>New fleet.</strong> Regularly renewed, well-maintained and comfortable vehicles.",
-      },
-      {
-        tr: "<strong>Grup transferi.</strong> Küçük ekiplerden kalabalık gruplara uygun kapasite seçenekleri.",
-        en: "<strong>Group transfer.</strong> Capacity options from small teams to large groups.",
-      },
-      {
-        tr: "<strong>Etkinlik ulaşımı.</strong> Fuar, seminer ve kurumsal etkinliklerde toplu taşıma planı.",
-        en: "<strong>Event transport.</strong> Collective transport plans for fairs, seminars and corporate events.",
-      },
-      {
-        tr: "<strong>Zaman planlaması.</strong> Şehir içi trafiği hesaba katan gerçekçi program.",
-        en: "<strong>Time planning.</strong> A realistic schedule that accounts for city traffic.",
-      },
-    ],
-    img: "/assets/img/sehirici-temsili.jpg",
-    imgAlt: { tr: "Şehir içinde seyir hâlindeki otobüs (temsili görsel)", en: "A coach travelling through the city (representative image)" },
-  },
-  {
-    id: "turizm-organizasyonlari",
-    no: { tr: "HİZMET 06", en: "SERVICE 06" },
-    title: { tr: "Turizm Organizasyonları", en: "Tour Organisations" },
-    short: {
-      tr: "Kurumsal geziler, tur programları ve etkinlik ulaşımının tam planlaması.",
-      en: "Full planning of corporate trips, tour programmes and event transport.",
-    },
-    lead: {
-      tr: "Kurumsal geziler, tur programları ve etkinlik ulaşımında planlamadan uygulamaya tam kapsamlı organizasyon.",
-      en: "Full-scope organisation of corporate trips, tour programmes and event transport, from planning to delivery.",
-    },
-    body: {
-      tr: "Personel motivasyon gezisi, bayi toplantısı ya da kültür turu… Programın kurgulanmasından araç planlamasına, mola noktalarından zaman çizelgesine kadar tüm süreci sizin adınıza yönetiyoruz.",
-      en: "Staff incentive trips, dealer meetings or culture tours — from shaping the programme to vehicle planning, rest stops and the timetable, we manage the entire process for you.",
-    },
-    checks: [
-      {
-        tr: "<strong>Program kurgusu.</strong> Güzergâh, konaklama ve zaman planının birlikte hazırlanması.",
-        en: "<strong>Programme design.</strong> Route, accommodation and timetable prepared together.",
-      },
-      {
-        tr: "<strong>Kurumsal geziler.</strong> Personel motivasyon ve bayi organizasyonlarında ulaşım yönetimi.",
-        en: "<strong>Corporate trips.</strong> Transport management for staff incentive trips and dealer events.",
-      },
-      {
-        tr: "<strong>Tur planlaması.</strong> Kültür ve gezi turlarında rehber koordinasyonu.",
-        en: "<strong>Tour planning.</strong> Guide coordination for culture and sightseeing tours.",
-      },
-      {
-        tr: "<strong>Tek muhatap.</strong> Organizasyon boyunca tek noktadan iletişim ve destek.",
-        en: "<strong>Single point of contact.</strong> One communication and support channel throughout the organisation.",
-      },
-    ],
-    img: "/assets/img/turizm-temsili.jpg",
-    imgAlt: { tr: "Tur otobüsü (temsili görsel)", en: "A tour coach (representative image)" },
-  },
 ];
 
 const FAQS: FaqItem[] = [
   {
     q: { tr: "Hangi bölgelerde hizmet veriyorsunuz?", en: "Which areas do you serve?" },
     a: {
-      tr: "Merkezimiz Gebze / Kocaeli'dedir. Kocaeli ve çevre iller başta olmak üzere Marmara Bölgesi genelinde hizmet veriyoruz. Şehirler arası transfer ve turizm organizasyonlarında ise Türkiye geneline hizmet sunabiliyoruz.",
-      en: "Our base is in Gebze / Kocaeli. We serve Kocaeli and neighbouring provinces, and the wider Marmara Region. For intercity transfers and tour organisations, we can serve the whole of Türkiye.",
+      tr: "Merkezimiz Gebze / Kocaeli'dedir. Kocaeli ve çevre iller başta olmak üzere Marmara Bölgesi genelinde hizmet veriyoruz.",
+      en: "Our base is in Gebze / Kocaeli. We serve Kocaeli and neighbouring provinces, and the wider Marmara Region.",
     },
   },
   {
@@ -270,8 +202,8 @@ const FAQS: FaqItem[] = [
   {
     q: { tr: "Kısa süreli veya tek seferlik hizmet alabilir miyim?", en: "Can I get short-term or one-off service?" },
     a: {
-      tr: "Evet. Tek seferlik havalimanı transferi, etkinlik ulaşımı, günübirlik gezi ya da kısa dönem araç kiralama gibi ihtiyaçlarınız için de hizmet veriyoruz.",
-      en: "Yes. We also serve needs such as a one-off airport transfer, event transport, a day trip, or short-term vehicle rental.",
+      tr: "Evet. Tek seferlik havalimanı transferi ya da kısa dönem araç kiralama gibi ihtiyaçlarınız için de hizmet veriyoruz.",
+      en: "Yes. We also serve needs such as a one-off airport transfer or short-term vehicle rental.",
     },
   },
   {
@@ -285,6 +217,28 @@ const FAQS: FaqItem[] = [
 
 export default function Hizmetler() {
   const { t, tHtml } = useI18n();
+  const site = useSiteData();
+  const cms = pageText(site, "hizmetler");
+  const services = site?.hizmetler?.length
+    ? site.hizmetler.map((s: any, index: number) => {
+        const base = SERVICES.find((b) => b.id === s.id);
+        return {
+        ...base,
+        id: s.id,
+        no: { tr: `HİZMET ${String(index + 1).padStart(2, "0")}`, en: `SERVICE ${String(index + 1).padStart(2, "0")}` },
+        badge: base?.badge ?? {
+          tr: s.tr?.baslik || "Aktif Hizmet",
+          en: s.en?.baslik || s.tr?.baslik || "Active Service",
+        },
+        title: { tr: s.tr?.baslik || s.id, en: s.en?.baslik || s.tr?.baslik || s.id },
+        short: { tr: s.tr?.ozet || "", en: s.en?.ozet || s.tr?.ozet || "" },
+        lead: { tr: s.tr?.ozet || "", en: s.en?.ozet || s.tr?.ozet || "" },
+        body: { tr: s.tr?.detay || "", en: s.en?.detay || s.tr?.detay || "" },
+        img: siteAsset(s.gorsel, "/assets/img/favicon.png"),
+        imgAlt: { tr: s.tr?.baslik || s.id, en: s.en?.baslik || s.id },
+        };
+      }) as ServiceDetail[]
+    : SERVICES;
 
   return (
     <>
@@ -303,31 +257,43 @@ export default function Hizmetler() {
           { label: { tr: "Hizmetler", en: "Services" } },
         ]}
         eyebrow={{ tr: "Hizmetlerimiz", en: "Our Services" }}
-        title={{ tr: "Kurumsal ulaşımda uçtan uca çözüm", en: "End-to-end solutions in corporate transport" }}
-        lead={{
-          tr: "Personel servisinden VIP transfere, araç kiralamadan turizm organizasyonlarına kadar tüm ulaşım ihtiyaçlarınız tek bir çatı altında.",
-          en: "From staff shuttles to VIP transfer, from vehicle rental to tour organisations — all your transport needs under one roof.",
-        }}
+        title={cms("hero_baslik", { tr: "Kurumsal ulaşımda uçtan uca çözüm", en: "End-to-end solutions in corporate transport" })}
+        lead={cms("hero_metin", {
+          tr: "Personel taşımacılığı, öğrenci servisi, VIP transfer ve araç kiralama ihtiyaçlarınız tek bir çatı altında.",
+          en: "Personnel transport, student shuttles, VIP transfer and vehicle rental under one roof.",
+        })}
       />
 
-      {/* HIZLI ERİŞİM */}
-      <section className="section section--tight">
+      {/* HİZMET KATEGORİLERİ */}
+      <section className="section">
         <div className="container">
-          <Reveal className="grid-3">
-            {SERVICES.map((s, i) => (
-              <a className="service-card" href={`#${s.id}`} key={s.id}>
-                <p className="service-card__no">{String(i + 1).padStart(2, "0")}</p>
-                <h3>{t(s.title)}</h3>
-                <p>{t(s.short)}</p>
-                <span className="link-arrow">{t("İncele", "View")}</span>
+          <SectionHead
+            eyebrow={{ tr: "Hizmetlerimiz", en: "Our Services" }}
+            title={{ tr: "Sunduğumuz hizmetler", en: "The services we offer" }}
+            text={{
+              tr: "Kurumsal ulaşım ihtiyaçlarınızı hizmet türüne göre grupluyoruz.",
+              en: "We group your corporate transport needs by service type.",
+            }}
+          />
+
+          <div className="grid-auto">
+            {services.map((s) => (
+              <a className="project-cat" href={`#${s.id}`} key={s.id}>
+                <img className="media media--16-9" src={s.img} alt={t(s.imgAlt)} loading="lazy" />
+                <div className="project-cat__body">
+                  <span className="project-cat__count">{t(s.badge)}</span>
+                  <h3>{t(s.title)}</h3>
+                  <p>{t(s.short)}</p>
+                  <span className="link-arrow">{t("Hizmeti gör", "See service")}</span>
+                </div>
               </a>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
       {/* HİZMET DETAYLARI */}
-      {SERVICES.map((s, i) => (
+      {services.map((s, i) => (
         <section
           className={"service-detail" + (i % 2 ? " service-detail--alt" : "")}
           id={s.id}

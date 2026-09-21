@@ -5,6 +5,9 @@
 (function () {
   "use strict";
 
+  /* Belge kökü — dil/yön öznitelikleri burada güncellenir (12. bölüm). */
+  var root = document.documentElement;
+
   /* ---- 0. Ortak yardımcılar -------------------------------------------
      Arapça'da sitedeki görünür rakamlar Arap-Hint biçiminde (٠-٩)
      gösterilir; diğer dillerde standart Latin rakamları kalır. `uiLang`
@@ -437,61 +440,6 @@
       });
     }
   });
-
-  /* ---- 11. Tema (açık / koyu) -----------------------------------------------
-     İlk ziyarette sistem tercihi <head>'deki küçük betikle uygulanır; burada
-     yalnızca butonu bağlıyor ve tıklamada geçişi yönetiyoruz. Seçim
-     localStorage'da "akd-theme" anahtarıyla saklanır ve tüm sayfalarda korunur.
-     ------------------------------------------------------------------------ */
-  var THEME_KEY = "akd-theme";
-  var root = document.documentElement;
-  var themeBtn = document.querySelector(".theme-toggle");
-
-  function currentTheme() {
-    return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  }
-
-  function setTheme(mode, persist) {
-    // Kısa süreli yumuşak renk geçişi
-    root.classList.add("theme-anim");
-    window.setTimeout(function () { root.classList.remove("theme-anim"); }, 450);
-
-    root.setAttribute("data-theme", mode);
-    if (themeBtn) {
-      themeBtn.setAttribute("aria-pressed", String(mode === "dark"));
-      themeBtn.setAttribute(
-        "aria-label",
-        mode === "dark" ? "Aydınlık moda geç" : "Koyu moda geç"
-      );
-    }
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", mode === "dark" ? "#0d131b" : "#ffffff");
-
-    if (persist) {
-      try { localStorage.setItem(THEME_KEY, mode); } catch (e) {}
-    }
-  }
-
-  if (themeBtn) {
-    setTheme(currentTheme(), false); // buton etiketlerini eşitle
-    themeBtn.addEventListener("click", function () {
-      setTheme(currentTheme() === "dark" ? "light" : "dark", true);
-    });
-  }
-
-  // Kullanıcı manuel seçim yapmadıysa sistem tercihindeki değişimi izle
-  try {
-    var mq = window.matchMedia("(prefers-color-scheme: dark)");
-    var onSystemChange = function (e) {
-      var stored = null;
-      try { stored = localStorage.getItem(THEME_KEY); } catch (err) {}
-      if (stored !== "dark" && stored !== "light") {
-        setTheme(e.matches ? "dark" : "light", false);
-      }
-    };
-    if (mq.addEventListener) mq.addEventListener("change", onSystemChange);
-    else if (mq.addListener) mq.addListener(onSystemChange);
-  } catch (e) {}
 
   /* ---- 12. Dil — çok dilli açılır menü ---------------------------------
      Diller assets/i18n/languages.json ile tanımlanır. tr = sayfadaki

@@ -78,8 +78,8 @@ const rights: Pair[] = [
 
 const applyChannels: Pair[] = [
   {
-    tr: "<strong>Yazılı başvuru:</strong> Köşklüçesme Mah. Topçular Cad. No: 66/A, Gebze / Kocaeli",
-    en: "<strong>Written application:</strong> Köşklüçesme Mah. Topçular Cad. No: 66/A, Gebze / Kocaeli",
+    tr: "<strong>Yazılı başvuru:</strong> Mevlana Mah. Soma Maden Şehitleri Blv., 41400 Gebze / Kocaeli",
+    en: "<strong>Written application:</strong> Mevlana Mah. Soma Maden Şehitleri Blv., 41400 Gebze / Kocaeli",
   },
   {
     tr: '<strong>E-posta:</strong> <a href="mailto:info@akdoganturizm.com" style="color:var(--blue-600)">info@akdoganturizm.com</a>',
@@ -143,8 +143,8 @@ export default function Kvkk() {
             <p
               dangerouslySetInnerHTML={{
                 __html: tHtml(
-                  "<strong>Adres:</strong> Köşklüçesme Mah. Topçular Cad. No: 66/A, Gebze / Kocaeli<br><strong>Telefon:</strong> 0262 642 91 03<br><strong>E-posta:</strong> info@akdoganturizm.com",
-                  "<strong>Address:</strong> Köşklüçesme Mah. Topçular Cad. No: 66/A, Gebze / Kocaeli<br><strong>Phone:</strong> 0262 642 91 03<br><strong>Email:</strong> info@akdoganturizm.com"
+                  "<strong>Adres:</strong> Mevlana Mah. Soma Maden Şehitleri Blv., 41400 Gebze / Kocaeli<br><strong>Telefon:</strong> 0262 642 91 03<br><strong>E-posta:</strong> info@akdoganturizm.com",
+                  "<strong>Address:</strong> Mevlana Mah. Soma Maden Şehitleri Blv., 41400 Gebze / Kocaeli<br><strong>Phone:</strong> 0262 642 91 03<br><strong>Email:</strong> info@akdoganturizm.com"
                 ),
               }}
             />
@@ -221,8 +221,8 @@ export default function Kvkk() {
             <h2>{t("9. Çerezler", "9. Cookies")}</h2>
             <p>
               {t(
-                "Web sitemiz çerez kullanmaz. Yalnızca sitenin düzgün çalışması için tema ve dil tercihiniz tarayıcınızın yerel deposunda (localStorage) saklanır; bu bilgi sunucuya gönderilmez, üçüncü taraflarla paylaşılmaz ve reklam/analiz amacıyla kullanılmaz. Tarayıcı ayarlarınızdan site verilerini silerek bu tercihi her zaman kaldırabilirsiniz.",
-                "Our website does not use cookies. Only your theme and language preference is stored in your browser's local storage (localStorage) so the site works correctly; this information is never sent to the server, shared with third parties, or used for advertising or analytics. You can remove it at any time by clearing site data in your browser settings."
+                "Web sitemiz çerez kullanmaz. Yalnızca dil tercihiniz tarayıcınızın yerel deposunda (localStorage) saklanır; bu bilgi sunucuya gönderilmez, üçüncü taraflarla paylaşılmaz ve reklam/analiz amacıyla kullanılmaz. Tarayıcı ayarlarınızdan bu tercihi her zaman kaldırabilirsiniz.",
+                "Our website does not use cookies. Language preference is stored in your browser's local storage (localStorage) so the site works correctly; this information is never sent to the server, shared with third parties, or used for advertising or analytics. You can remove it at any time by clearing site data in your browser settings."
               )}
             </p>
           </Reveal>

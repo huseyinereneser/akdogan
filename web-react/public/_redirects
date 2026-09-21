@@ -1,0 +1,15 @@
+# Eski bağımsız sayfalar birleşik sayfalardaki doğru bölüme taşınır.
+/hakkimizda              /kurumsal#hakkimizda     301
+/kadromuz                /kurumsal#kadromuz       301
+/belgeler                /kurumsal#belgeler       301
+/hesap-numaralarimiz     /kurumsal#hesaplar        301
+/kvkk                    /kurumsal#kvkk            301
+/galeri                  /medya#galeri              301
+/videolar                /medya#videolar            301
+/yorumlar                /medya#yorum-birak         301
+/insan-kaynaklari        /iletisim#insan-kaynaklari 301
+
+# SPA fallback — her yol index.html'e düşer, React Router devralır.
+# Gerçek dosyalar (assets, robots.txt, sitemap.xml, __forms.html) bu kuraldan
+# önce eşleştiği için etkilenmez.
+/*    /index.html    200

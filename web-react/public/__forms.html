@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex" />
+<title>Netlify form tanımları</title>
+</head>
+<body>
+<!--
+  Bu dosya SADECE Netlify'ın derleme sırasında formları tanıması içindir;
+  ziyaretçiler görmez. React tarafındaki formlar (web-react/src/components/form/form.tsx)
+  FormData'yı "/" adresine POST eder ve "form-name" alanıyla buradaki formlardan
+  birini seçer.
+
+  ÖNEMLİ: alan "name" değerleri React formlarındaki alanlarla birebir aynı olmalı;
+  eksik alanlar Netlify tarafından yok sayılır.
+-->
+
+<form name="teklif" data-netlify="true" netlify-honeypot="website" hidden>
+  <input type="hidden" name="form-name" value="teklif" />
+  <input type="hidden" name="form" />
+  <input type="hidden" name="ajax" />
+  <input type="text" name="ad" />
+  <input type="tel" name="telefon" />
+  <input type="email" name="eposta" />
+  <input type="text" name="hizmet" />
+  <input type="text" name="hizmet_diger" />
+  <textarea name="mesaj"></textarea>
+  <input type="file" name="dosya[]" />
+  <input type="text" name="website" />
+</form>
+
+<form name="basvuru" data-netlify="true" netlify-honeypot="website" hidden>
+  <input type="hidden" name="form-name" value="basvuru" />
+  <input type="hidden" name="form" />
+  <input type="hidden" name="ajax" />
+  <input type="text" name="ad" />
+  <input type="tel" name="telefon" />
+  <input type="email" name="eposta" />
+  <input type="text" name="pozisyon" />
+  <input type="number" name="deneyim" />
+  <input type="text" name="pozisyon_diger" />
+  <input type="text" name="belgeler" />
+  <textarea name="mesaj"></textarea>
+  <input type="file" name="dosya[]" />
+  <input type="text" name="website" />
+</form>
+
+<form name="yorum" data-netlify="true" netlify-honeypot="website" hidden>
+  <input type="hidden" name="form-name" value="yorum" />
+  <input type="hidden" name="form" />
+  <input type="hidden" name="ajax" />
+  <input type="text" name="ad" />
+  <input type="text" name="kurum" />
+  <input type="email" name="eposta" />
+  <textarea name="yorum"></textarea>
+  <input type="text" name="website" />
+</form>
+</body>
+</html>

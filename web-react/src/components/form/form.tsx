@@ -14,6 +14,12 @@ import type { Pair } from "@/i18n/I18nProvider";
 
 type Status = "idle" | "ok" | "error";
 
+/**
+ * Gönderim hedefi Netlify Forms'tur (arka uç gerektirmez): FormData "/"
+ * adresine POST edilir, "form-name" alanıyla eşleşen formu yakalar
+ * (bkz. web-react/public/__forms.html).
+ */
+
 function validateForm(form: HTMLFormElement): boolean {
   let valid = true;
   let firstBad: HTMLElement | null = null;
@@ -49,7 +55,7 @@ function validateForm(form: HTMLFormElement): boolean {
 }
 
 interface AkFormProps {
-  /** gonder.php'deki gizli "form" alanı: teklif | basvuru | yorum. */
+  /** Gizli "form" alanının değeri: teklif | basvuru | yorum. */
   formName: string;
   multipart?: boolean;
   className?: string;
@@ -97,20 +103,18 @@ export function AkForm({
     data.set("ajax", "1");
     data.set("form", formName);
     try {
-      const r = await fetch(form.getAttribute("action") || "/gonder.php", {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-      const res = await r.json().catch(() => ({ ok: false }));
-      if (res && res.ok === true) {
+      // Netlify Forms: kök adrese POST, formu "form-name" ile seç.
+      data.set("form-name", formName);
+      const r = await fetch("/", { method: "POST", body: data });
+      const ok = r.ok;
+      if (ok) {
         form.reset();
         form
           .querySelectorAll<HTMLElement>(".filefield[data-oversize]")
           .forEach((f) => f.removeAttribute("data-oversize"));
         setStatus("ok");
-        const ok = form.querySelector(".form-status--ok");
-        ok?.scrollIntoView({ behavior: "smooth", block: "center" });
+        const okEl = form.querySelector(".form-status--ok");
+        okEl?.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
         setStatus("error");
       }
@@ -128,7 +132,7 @@ export function AkForm({
       className={"form-grid" + (className ? " " + className : "")}
       style={style}
       method="post"
-      action="/gonder.php"
+      action="/"
       encType={multipart ? "multipart/form-data" : undefined}
       noValidate
       onSubmit={onSubmit}

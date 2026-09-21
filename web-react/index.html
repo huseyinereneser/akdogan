@@ -3,32 +3,27 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- Tema + dil tercihini boyamadan önce uygula (yanıp sönmeyi önler). -->
+<!-- Dil ve yön bilgisini boyamadan önce uygula. -->
 <script>
 (function () {
   try {
     var d = document.documentElement, t = null, l = null, dir = null;
     try {
-      t = localStorage.getItem("akd-theme");
       l = localStorage.getItem("akd-lang");
       dir = localStorage.getItem("akd-dir");
     } catch (e) {}
-    if (t !== "dark" && t !== "light") {
-      t = (window.matchMedia && matchMedia("(prefers-color-scheme:dark)").matches) ? "dark" : "light";
-    }
-    d.setAttribute("data-theme", t);
     d.setAttribute("lang", /^[a-z]{2,3}$/.test(l || "") ? l : "tr");
     d.setAttribute("dir", dir === "rtl" ? "rtl" : "ltr");
   } catch (e) {}
 })();
 </script>
-<title>Akdoğan Turizm | Kurumsal Ulaşım ve Turizm Hizmetleri — Gebze / Kocaeli</title>
-<meta name="description" content="2010'dan bu yana personel taşımacılığı, öğrenci servisi, VIP transfer, araç kiralama ve turizm organizasyonları. Gebze / Kocaeli merkezli, modern ve 0 km araç filosu." />
-<meta name="theme-color" content="#081727" />
+<title>Akdoğan Turizm | Kurumsal Ulaşım Hizmetleri — Gebze / Kocaeli</title>
+<meta name="description" content="2010'dan bu yana personel taşımacılığı, öğrenci servisi, VIP transfer ve araç kiralama. Gebze / Kocaeli merkezli, modern ve 0 km araç filosu." />
+<meta name="theme-color" content="#ffffff" />
 <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 <body>

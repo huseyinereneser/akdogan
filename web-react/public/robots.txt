@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tesekkurler
+Disallow: /hesap-numaralarimiz
+
+Sitemap: https://www.akdoganturizm.com/sitemap.xml

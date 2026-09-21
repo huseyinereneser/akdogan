@@ -3,9 +3,11 @@ import { PageMeta } from "@/components/PageMeta";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { CtaSection } from "@/components/CtaSection";
+import { useSiteData, pageText } from "@/lib/site";
 
 export default function Haberler() {
   const { t, tHtml } = useI18n();
+  const cms = pageText(useSiteData(), "haberler");
 
   return (
     <>
@@ -20,11 +22,11 @@ export default function Haberler() {
           { label: { tr: "Haberler", en: "News" } },
         ]}
         eyebrow={{ tr: "Haberler", en: "News" }}
-        title={{ tr: "Bizden haberler", en: "News from us" }}
-        lead={{
+        title={cms("hero_baslik", { tr: "Bizden haberler", en: "News from us" })}
+        lead={cms("hero_metin", {
           tr: "Filo yenilemeleri, yeni projeler ve şirketimize dair duyurular bu sayfada yayımlanır.",
           en: "Fleet renewals, new projects and company announcements are published on this page.",
-        }}
+        })}
       />
 
       <section className="section">

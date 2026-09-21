@@ -24,8 +24,6 @@ personel-servis.jpg           Hizmet görselleri — 1200×900
 ogrenci-servis.jpg
 vip-transfer.jpg
 arac-kiralama.jpg
-sehir-ici.jpg
-turizm.jpg
 
 galeri/01.jpg ... galeri/12.jpg   Galeri görselleri — 1200×900
 

@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { CtaSection } from "@/components/CtaSection";
+import { initials } from "@/lib/site";
 import type { Pair } from "@/i18n/I18nProvider";
 
 interface Member {
@@ -75,10 +76,9 @@ export default function Kadromuz() {
           <div className="grid-auto grid-auto--4col">
             {TEAM.map((m, i) => (
               <Reveal as="article" className="team-card" delay={i * 80} key={m.name}>
-                <div
-                  className="ph ph--ratio-1-1"
-                  data-label={t("Fotoğraf · 800×800", "Photo · 800×800")}
-                />
+                <div className="team-card__avatar" aria-hidden="true">
+                  <span>{initials(m.name)}</span>
+                </div>
                 <div className="team-card__body">
                   <h3>{m.name}</h3>
                   <p className="team-card__role">{t(m.role)}</p>

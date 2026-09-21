@@ -233,9 +233,9 @@ export default function InsanKaynaklari() {
                   <div>
                     <h4>{t("Şahsen Başvuru", "Apply in person")}</h4>
                     <p>
-                      Köşklüçesme Mah. Topçular Cad.
+                      Mevlana Mah. Soma Maden Şehitleri Blv.
                       <br />
-                      No: 66/A, Gebze / Kocaeli
+                      41400 Gebze / Kocaeli
                     </p>
                   </div>
                 </div>

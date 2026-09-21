@@ -23,6 +23,20 @@ function ScrollManager() {
 
 export function Layout() {
   const { t } = useI18n();
+
+  useEffect(() => {
+    fetch("/assets/data/site.json", { cache: "no-cache" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        const appearance = data?.gorunum ?? {};
+        const root = document.documentElement;
+        if (/^#[0-9a-f]{6}$/i.test(appearance.accent || "")) root.style.setProperty("--accent", appearance.accent);
+        if (/^#[0-9a-f]{6}$/i.test(appearance.accent_dark || "")) root.style.setProperty("--accent-dark", appearance.accent_dark);
+        if (Number.isFinite(Number(appearance.radius))) root.style.setProperty("--radius", `${Math.max(0, Math.min(24, Number(appearance.radius)))}px`);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       <a className="skip-link" href="#icerik">

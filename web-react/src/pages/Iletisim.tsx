@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useI18n } from "@/i18n/I18nProvider";
+import { useSiteData, pageText, waLink } from "@/lib/site";
 import { PageMeta } from "@/components/PageMeta";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
@@ -32,17 +33,29 @@ const SERVICE_OPTIONS: SelectOption[] = [
   { value: "Öğrenci Taşımacılığı", label: { tr: "Öğrenci Taşımacılığı", en: "Student Transport" } },
   { value: "VIP Transfer", label: { tr: "VIP Transfer", en: "VIP Transfer" } },
   { value: "Araç Kiralama", label: { tr: "Araç Kiralama", en: "Vehicle Rental" } },
-  {
-    value: "Şehir İçi Yolcu Taşımacılığı",
-    label: { tr: "Şehir İçi Yolcu Taşımacılığı", en: "Intercity & Local Passenger Transport" },
-  },
-  { value: "Turizm Organizasyonları", label: { tr: "Turizm Organizasyonları", en: "Tour Organisations" } },
+  { value: "Diğer", label: { tr: "Diğer", en: "Other" } },
+];
+
+const POSITION_OPTIONS: SelectOption[] = [
+  { value: "", label: { tr: "Seçiniz", en: "Select" } },
+  { value: "Servis Şoförü (Personel Taşıma)", label: { tr: "Servis Şoförü (Personel Taşıma)", en: "Shuttle Driver (Personnel Transport)" } },
+  { value: "Okul Servisi Şoförü", label: { tr: "Okul Servisi Şoförü", en: "School Shuttle Driver" } },
+  { value: "Servis Rehber Personeli", label: { tr: "Servis Rehber Personeli", en: "Shuttle Chaperone" } },
+  { value: "Operasyon / Planlama Uzmanı", label: { tr: "Operasyon / Planlama Uzmanı", en: "Operations / Planning Specialist" } },
   { value: "Diğer", label: { tr: "Diğer", en: "Other" } },
 ];
 
 export default function Iletisim() {
   const { t } = useI18n();
   const [otherOpen, setOtherOpen] = useState(false);
+  const [ikOtherOpen, setIkOtherOpen] = useState(false);
+  const site = useSiteData();
+  const cms = pageText(site, "iletisim");
+  const contact = site?.iletisim ?? {};
+  const phone = contact.telefon || "0262 642 91 03";
+  const gsm = contact.gsm || "0546 881 46 71";
+  const whatsapp = contact.whatsapp || "0532 051 36 06";
+  const email = contact.eposta || "info@akdoganturizm.com";
 
   return (
     <>
@@ -55,18 +68,18 @@ export default function Iletisim() {
       />
 
       <PageHero
-        bg="/assets/img/sehirici-temsili.jpg"
-        bgAlt={{ tr: "Şehir içinde seyir hâlindeki otobüs (temsili görsel)", en: "A coach in the city (representative image)" }}
+        bg="/assets/img/road-2-temsili.jpg"
+        bgAlt={{ tr: "Yolda seyir hâlindeki servis aracı (temsili görsel)", en: "A shuttle on the road (representative image)" }}
         crumbs={[
           { label: { tr: "Ana Sayfa", en: "Home" }, to: "/" },
           { label: { tr: "İletişim", en: "Contact" } },
         ]}
         eyebrow={{ tr: "İletişim", en: "Contact" }}
-        title={{ tr: "Bize ulaşın", en: "Get in touch" }}
-        lead={{
+        title={cms("hero_baslik", { tr: "Bize ulaşın", en: "Get in touch" })}
+        lead={cms("hero_metin", {
           tr: "Ulaşım ihtiyacınızı anlatın; en kısa sürede size özel bir çözüm ve fiyat teklifiyle dönüş yapalım.",
           en: "Tell us what you need; we will get back to you with a tailored solution and quote as soon as possible.",
-        }}
+        })}
       />
 
       <section className="section" id="teklif">
@@ -93,9 +106,7 @@ export default function Iletisim() {
                   <div>
                     <h4>{t("Adres", "Address")}</h4>
                     <p>
-                      Köşklüçesme Mah. Topçular Cad. No: 66/A
-                      <br />
-                      Gebze / Kocaeli
+                      {contact.adres || "Mevlana Mah. Soma Maden Şehitleri Blv., 41400 Gebze / Kocaeli"}
                     </p>
                   </div>
                 </div>
@@ -109,11 +120,11 @@ export default function Iletisim() {
                   <div>
                     <h4>{t("Telefon", "Phone")}</h4>
                     <p>
-                      <a href="tel:+902626429103">0262 642 91 03</a>
+                      <a href={`tel:${phone.replace(/\D/g, "")}`}>{phone}</a>
                       <br />
-                      <a href="tel:+905468814671">0546 881 46 71</a>
+                      <a href={`tel:${gsm.replace(/\D/g, "")}`}>{gsm}</a>
                       <br />
-                      <a href="https://wa.me/905320513606">0532 051 36 06 (WhatsApp)</a>
+                      <a href={waLink(whatsapp)}>{whatsapp} (WhatsApp)</a>
                     </p>
                   </div>
                 </div>
@@ -128,7 +139,7 @@ export default function Iletisim() {
                   <div>
                     <h4>{t("E-posta", "Email")}</h4>
                     <p>
-                      <a href="mailto:info@akdoganturizm.com">info@akdoganturizm.com</a>
+                      <a href={`mailto:${email}`}>{email}</a>
                     </p>
                   </div>
                 </div>
@@ -144,8 +155,8 @@ export default function Iletisim() {
                     <h4>{t("Çalışma Saatleri", "Working Hours")}</h4>
                     <Html
                       as="p"
-                      tr="Hafta içi 09.00 – 19.00<br>Cumartesi 09.30 – 19.00<br>Pazar kapalı"
-                      en="Weekdays 09:00 – 19:00<br>Saturday 09:30 – 19:00<br>Sunday closed"
+                      tr={(contact.saatler_tr || "").trim() ? contact.saatler_tr.split(/\s*·\s*/).join("<br>") : "Hafta içi 09.00 – 19.00<br>Cumartesi 09.30 – 19.00<br>Pazar kapalı"}
+                      en={(contact.saatler_en || "").trim() ? contact.saatler_en.split(/\s*·\s*/).join("<br>") : "Weekdays 09:00 – 19:00<br>Saturday 09:30 – 19:00<br>Sunday closed"}
                     />
                   </div>
                 </div>
@@ -267,19 +278,189 @@ export default function Iletisim() {
             eyebrow={{ tr: "Konum", en: "Location" }}
             title={{ tr: "Gebze / Kocaeli", en: "Gebze / Kocaeli" }}
             text={{
-              tr: "Merkezimiz Köşklüçesme Mahallesi, Topçular Caddesi üzerindedir.",
-              en: "Our centre is on Topçular Caddesi, in the Köşklüçesme district.",
+              tr: "Merkezimiz Mevlana Mahallesi, Soma Maden Şehitleri Bulvarı üzerindedir.",
+              en: "Our centre is on Soma Maden Şehitleri Boulevard, in the Mevlana district.",
             }}
           />
           <Reveal className="map">
             <iframe
               title={t("Akdoğan Turizm konumu — Gebze / Kocaeli", "Akdoğan Turizm location — Gebze / Kocaeli")}
-              src="https://www.google.com/maps?q=K%C3%B6%C5%9Fkl%C3%BC%C3%A7e%C5%9Fme%20Mah.%20Top%C3%A7ular%20Cad.%20No%3A66%2FA%20Gebze%20Kocaeli&hl=tr&z=16&output=embed"
+              src="https://www.google.com/maps?q=Mevlana%20Mah.%20Soma%20Maden%20%C5%9Eehitleri%20Blv.%20Gebze%20Kocaeli&hl=tr&z=16&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
           </Reveal>
+        </div>
+      </section>
+
+      <section className="section section--soft" id="insan-kaynaklari">
+        <div className="container">
+          <div className="contact-layout">
+            <Reveal>
+              <p className="eyebrow">{t("İnsan Kaynakları", "Human Resources")}</p>
+              <h2>{t("Ekibimize katılın", "Join our team")}</h2>
+              <p style={{ marginTop: 20, color: "var(--text-muted)" }}>
+                {t(
+                  "Büyüyen filomuz ve artan proje sayımızla ekibimizi genişletiyoruz. Servis şoförü, okul servisi şoförü, rehber personel ve operasyon uzmanı pozisyonları için başvuruları sürekli değerlendiriyoruz; açık pozisyon olmasa dahi başvurunuz kayıtlarımızda tutulur.",
+                  "As our fleet grows and our projects increase, we are expanding our team. We review applications for shuttle driver, school shuttle driver, chaperone and operations specialist roles on an ongoing basis; even with no open position, your application is kept on file."
+                )}
+              </p>
+
+              <div className="info-list">
+                <div className="info-item">
+                  <span className="info-item__icon">
+                    <svg viewBox="0 0 24 24" {...stroke}>
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m2 7 10 6 10-6" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h4>{t("Özgeçmiş gönderin", "Send your CV")}</h4>
+                    <p>
+                      <a href={`mailto:${email}?subject=${encodeURIComponent("İş Başvurusu")}`}>{email}</a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="info-item">
+                  <span className="info-item__icon">
+                    <svg viewBox="0 0 24 24" {...stroke}>
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h4>{t("Şahsen başvuru", "Apply in person")}</h4>
+                    <p>{contact.adres || "Mevlana Mah. Soma Maden Şehitleri Blv., 41400 Gebze / Kocaeli"}</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal className="form-card" delay={120}>
+              <h3>{t("İş başvurusu", "Job application")}</h3>
+              <p style={{ marginTop: 10, color: "var(--text-muted)", fontSize: "0.9375rem" }}>
+                {t("Zorunlu alanları doldurup formu gönderin.", "Fill in the required fields and submit the form.")}
+              </p>
+
+              <AkForm formName="basvuru" multipart style={{ marginTop: 28 }}>
+                {({ status, busy }) => (
+                  <>
+                    <Field
+                      id="ik-ad"
+                      name="ad"
+                      label={{ tr: "Ad Soyad", en: "Full name" }}
+                      required
+                      autoComplete="name"
+                      placeholder={{ tr: "Adınız ve soyadınız", en: "Your name and surname" }}
+                      error={{ tr: "Lütfen ad soyad girin.", en: "Please enter your full name." }}
+                    />
+                    <Field
+                      id="ik-telefon"
+                      name="telefon"
+                      type="tel"
+                      label={{ tr: "Telefon", en: "Phone" }}
+                      required
+                      autoComplete="tel"
+                      placeholder={{ tr: "05XX XXX XX XX", en: "05XX XXX XX XX" }}
+                      error={{ tr: "Geçerli bir telefon numarası girin.", en: "Please enter a valid phone number." }}
+                    />
+                    <Field
+                      id="ik-eposta"
+                      name="eposta"
+                      type="email"
+                      full
+                      label={{ tr: "E-posta", en: "Email" }}
+                      required
+                      autoComplete="email"
+                      placeholder={{ tr: "ornek@eposta.com", en: "e.g. name@email.com" }}
+                      error={{ tr: "Geçerli bir e-posta adresi girin.", en: "Please enter a valid email address." }}
+                    />
+                    <SelectField
+                      id="ik-pozisyon"
+                      name="pozisyon"
+                      required
+                      label={{ tr: "Başvurulan pozisyon", en: "Position applied for" }}
+                      options={POSITION_OPTIONS}
+                      toggleValue="Diğer"
+                      onToggle={setIkOtherOpen}
+                      error={{ tr: "Lütfen bir pozisyon seçin.", en: "Please select a position." }}
+                    />
+                    <Field
+                      id="ik-deneyim"
+                      name="deneyim"
+                      type="number"
+                      min={0}
+                      max={60}
+                      label={{ tr: "Deneyim (yıl)", en: "Experience (years)" }}
+                      placeholder={{ tr: "Örn. 5", en: "e.g. 5" }}
+                    />
+                    <ConditionalField
+                      open={ikOtherOpen}
+                      id="ik-pozisyon-diger"
+                      name="pozisyon_diger"
+                      required
+                      label={{ tr: "Hangi pozisyon için başvuruyorsunuz?", en: "Which position are you applying for?" }}
+                      placeholder={{
+                        tr: "Başvurmak istediğiniz görevi yazın",
+                        en: "Write the role you want to apply for",
+                      }}
+                      error={{ tr: "Lütfen pozisyonu yazın.", en: "Please write the position." }}
+                    />
+                    <Field
+                      id="ik-belgeler"
+                      name="belgeler"
+                      full
+                      label={{ tr: "Sahip olduğunuz belgeler", en: "Certificates you hold" }}
+                      placeholder={{
+                        tr: "Örn. E sınıfı ehliyet, SRC-2, psikoteknik",
+                        en: "e.g. class E licence, SRC-2, psychotechnical",
+                      }}
+                    />
+                    <TextAreaField
+                      id="ik-mesaj"
+                      name="mesaj"
+                      label={{ tr: "Kısa özgeçmiş", en: "Brief CV" }}
+                      required
+                      placeholder={{
+                        tr: "Daha önce çalıştığınız yerler, görevleriniz ve sizinle nasıl iletişime geçebileceğimiz.",
+                        en: "Where you have worked before, your roles and how we can reach you.",
+                      }}
+                      error={{ tr: "Lütfen kısa bir özgeçmiş yazın.", en: "Please write a brief CV." }}
+                    />
+                    <FileField
+                      id="ik-dosya"
+                      name="dosya[]"
+                      label={{ tr: "CV / belge ekleyin", en: "Attach a CV / document" }}
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                      hint={{
+                        tr: "Özgeçmişinizi, sürücü belgesi veya SRC sertifikanızın fotoğrafını ekleyebilirsiniz. PDF, Word veya görsel · toplam en fazla 10 MB.",
+                        en: "You can attach your CV or a photo of your driving licence or SRC certificate. PDF, Word or image · 10 MB total maximum.",
+                      }}
+                    />
+                    <SubmitBlock
+                      status={status}
+                      busy={busy}
+                      label={{ tr: "Başvuruyu Gönder", en: "Submit application" }}
+                      note={{
+                        tr: "Formu göndererek, başvurunuzun değerlendirilmesi amacıyla bilgilerinizin işlenmesini kabul etmiş olursunuz.",
+                        en: "By submitting this form, you agree to your information being processed for the purpose of evaluating your application.",
+                      }}
+                      okMsg={{
+                        tr: "Başvurunuz alındı. Uygun bir pozisyon olduğunda sizinle iletişime geçeceğiz.",
+                        en: "Your application has been received. We will contact you when a suitable position opens.",
+                      }}
+                      errMsg={{
+                        tr: "Şu an gönderilemedi. Lütfen info@akdoganturizm.com adresine yazın.",
+                        en: "It could not be sent right now. Please e-mail info@akdoganturizm.com.",
+                      }}
+                    />
+                  </>
+                )}
+              </AkForm>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -290,8 +471,8 @@ export default function Iletisim() {
           en: "Call us directly; our operations team will help you right away.",
         }}
         actions={[
-          { label: { tr: "0262 642 91 03", en: "0262 642 91 03" }, href: "tel:+902626429103" },
-          { label: { tr: "WhatsApp'tan Yaz", en: "Message on WhatsApp" }, href: "https://wa.me/905320513606", variant: "light" },
+          { label: { tr: phone, en: phone }, href: `tel:${phone.replace(/\D/g, "")}` },
+          { label: { tr: "WhatsApp'tan Yaz", en: "Message on WhatsApp" }, href: waLink(whatsapp), variant: "light" },
         ]}
       />
     </>

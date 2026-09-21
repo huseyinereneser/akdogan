@@ -4,22 +4,25 @@ import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead, ReasonList, type Reason } from "@/components/SectionHead";
 import { CtaSection } from "@/components/CtaSection";
+import { CountUp } from "@/components/CountUp";
+import { useSiteData, pageText } from "@/lib/site";
 import type { Pair } from "@/i18n/I18nProvider";
 
 interface Ref {
   name: string;
   sector: Pair;
+  logo: string;
 }
 
 const REFS: Ref[] = [
-  { name: "Çoban Yıldızları İlköğretim Okulu", sector: { tr: "Eğitim", en: "Education" } },
-  { name: "Aydınlar Refrakter", sector: { tr: "Refrakter / Üretim", en: "Refractory / Manufacturing" } },
-  { name: "Planet Plastik", sector: { tr: "Plastik", en: "Plastics" } },
-  { name: "Cavitech Denizcilik", sector: { tr: "Denizcilik", en: "Maritime" } },
-  { name: "Betasan", sector: { tr: "Üretim", en: "Manufacturing" } },
-  { name: "CPS", sector: { tr: "Sanayi", en: "Industry" } },
-  { name: "Else Plastik", sector: { tr: "Plastik", en: "Plastics" } },
-  { name: "Özverler", sector: { tr: "Sanayi", en: "Industry" } },
+  { name: "Çoban Yıldızları İlköğretim Okulu", sector: { tr: "Eğitim", en: "Education" }, logo: "/assets/img/references/coban-yildizlari.png" },
+  { name: "Aydınlar Refrakter", sector: { tr: "Refrakter / Üretim", en: "Refractory / Manufacturing" }, logo: "/assets/img/references/aydinlar-refrakter.png" },
+  { name: "Planet Plastik", sector: { tr: "Plastik", en: "Plastics" }, logo: "/assets/img/references/planet-plastik.png" },
+  { name: "Cavitech Denizcilik", sector: { tr: "Denizcilik", en: "Maritime" }, logo: "/assets/img/references/cavitech.png" },
+  { name: "Betasan", sector: { tr: "Üretim", en: "Manufacturing" }, logo: "/assets/img/references/betasan.png" },
+  { name: "CPS", sector: { tr: "Sanayi", en: "Industry" }, logo: "/assets/img/references/cps.svg" },
+  { name: "Else Plastik", sector: { tr: "Plastik", en: "Plastics" }, logo: "/assets/img/references/else-plastik.png" },
+  { name: "Özverler", sector: { tr: "Sanayi", en: "Industry" }, logo: "/assets/img/references/ozverler.png" },
 ];
 
 const APPROACH: Reason[] = [
@@ -57,8 +60,11 @@ const APPROACH: Reason[] = [
   },
 ];
 
+const SECTOR_COUNT = new Set(REFS.map((r) => r.sector.tr)).size;
+
 export default function Referanslar() {
   const { t } = useI18n();
+  const cms = pageText(useSiteData(), "referanslar");
 
   return (
     <>
@@ -72,12 +78,35 @@ export default function Referanslar() {
           { label: { tr: "Referanslar", en: "References" } },
         ]}
         eyebrow={{ tr: "Referanslarımız", en: "Our References" }}
-        title={{ tr: "Bize güvenen kurumlar", en: "Organisations that trust us" }}
-        lead={{
+        title={cms("hero_baslik", { tr: "Bize güvenen kurumlar", en: "Organisations that trust us" })}
+        lead={cms("hero_metin", {
           tr: "2010'dan bu yana eğitim, üretim, denizcilik ve plastik sektörlerinden birçok kuruluşun ulaşım ihtiyacını yönetiyoruz.",
           en: "Since 2010 we have managed the transport needs of many organisations in the education, manufacturing, maritime and plastics sectors.",
-        }}
+        })}
       />
+
+      <section className="stats stats--gold">
+        <div className="container">
+          <div className="stats__grid stats__grid--3">
+            <Reveal className="stat">
+              <div className="stat__value">2010</div>
+              <p className="stat__label">{t("Kuruluş yılı", "Year founded")}</p>
+            </Reveal>
+            <Reveal className="stat" delay={80}>
+              <div className="stat__value">
+                <CountUp value={60} suffix="+" />
+              </div>
+              <p className="stat__label">{t("Kurumsal iş ortağı", "Corporate partners")}</p>
+            </Reveal>
+            <Reveal className="stat" delay={160}>
+              <div className="stat__value">
+                <CountUp value={SECTOR_COUNT} />
+              </div>
+              <p className="stat__label">{t("Farklı sektörde hizmet", "Sectors served")}</p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="container">
@@ -93,19 +122,12 @@ export default function Referanslar() {
           <Reveal className="ref-grid">
             {REFS.map((r) => (
               <div className="ref-item" key={r.name}>
-                <span className="ref-item__mark">LOGO</span>
+                <img className="ref-item__logo" src={r.logo} alt={r.name} />
                 <span className="ref-item__name">{r.name}</span>
                 <span className="ref-item__sector">{t(r.sector)}</span>
               </div>
             ))}
           </Reveal>
-
-          <p className="form-note" style={{ marginTop: 24 }}>
-            {t(
-              "Referans listemiz ve sektörler yalnızca bilgilendirme amaçlıdır. Detaylı referans bilgisi için bizimle iletişime geçebilirsiniz.",
-              "Our reference list and sectors are for informational purposes only. Please contact us for detailed reference information."
-            )}
-          </p>
         </div>
       </section>
 

@@ -1,11 +1,11 @@
 {
-    "guncelleme": "2026-09-09T18:20:30+00:00",
+    "guncelleme": "2026-09-11T16:01:19+00:00",
     "iletisim": {
         "telefon": "0262 642 91 03",
         "gsm": "0546 881 46 71",
         "whatsapp": "0532 051 36 06",
         "eposta": "info@akdoganturizm.com",
-        "adres": "Köşklüçesme Mah. Topçular Cad. No: 66/A, Gebze / Kocaeli",
+        "adres": "Mevlana Mah. Soma Maden Şehitleri Blv., 41400 Gebze / Kocaeli",
         "saatler_tr": "Hafta içi 09.00 – 19.00 · Cumartesi 09.30 – 19.00 · Pazar kapalı",
         "saatler_en": "Weekdays 09:00 – 19:00 · Saturday 09:30 – 19:00 · Sunday closed"
     },
@@ -95,6 +95,7 @@
     },
     "bolumler": {
         "anasayfa.hero": true,
+        "anasayfa.referanslar": true,
         "anasayfa.hakkimizda": true,
         "anasayfa.hizmetler": true,
         "anasayfa.neden": true,
@@ -167,12 +168,52 @@
     ],
     "galeri": [
         {
-            "id": "g01",
+            "id": "gf1",
             "sira": 1,
-            "dosya": "assets/img/fleet-temsili.jpg",
+            "dosya": "assets/img/filo-01.jpg",
             "kategori": "filo",
-            "baslik_tr": "Araç filomuzdan bir görünüm",
-            "baslik_en": "A view from our fleet"
+            "baslik_tr": "Servis filomuz ve sürücü ekibimiz",
+            "baslik_en": "Our shuttle fleet and driver team"
+        },
+        {
+            "id": "gf2",
+            "sira": 2,
+            "dosya": "assets/img/filo-02.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Sıralı araç filomuz",
+            "baslik_en": "Our fleet lined up"
+        },
+        {
+            "id": "gf3",
+            "sira": 3,
+            "dosya": "assets/img/filo-03.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Mercedes Sprinter servis aracı",
+            "baslik_en": "Mercedes Sprinter shuttle"
+        },
+        {
+            "id": "gf4",
+            "sira": 4,
+            "dosya": "assets/img/filo-04.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Volkswagen Crafter minibüs filosu",
+            "baslik_en": "Volkswagen Crafter minibus fleet"
+        },
+        {
+            "id": "gf5",
+            "sira": 5,
+            "dosya": "assets/img/filo-05.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Servis minibüsümüz",
+            "baslik_en": "One of our shuttle minibuses"
+        },
+        {
+            "id": "gf6",
+            "sira": 6,
+            "dosya": "assets/img/filo-06.jpg",
+            "kategori": "filo",
+            "baslik_tr": "Personel servis aracımız",
+            "baslik_en": "One of our personnel shuttles"
         },
         {
             "id": "g02",
@@ -199,28 +240,12 @@
             "baslik_en": "Airport meet-and-greet"
         },
         {
-            "id": "g05",
-            "sira": 5,
-            "dosya": "assets/img/fleet-2-temsili.jpg",
-            "kategori": "filo",
-            "baslik_tr": "0 km araçlarımız",
-            "baslik_en": "Our zero-km vehicles"
-        },
-        {
             "id": "g07",
             "sira": 7,
             "dosya": "assets/img/personel-yolcu-temsili.jpg",
             "kategori": "personel",
             "baslik_tr": "Toplanma noktası düzeni",
             "baslik_en": "Pickup point setup"
-        },
-        {
-            "id": "g08",
-            "sira": 8,
-            "dosya": "assets/img/arac-kiralama-temsili.jpg",
-            "kategori": "filo",
-            "baslik_tr": "Periyodik araç bakımı",
-            "baslik_en": "Scheduled vehicle maintenance"
         },
         {
             "id": "g09",
@@ -245,14 +270,6 @@
             "kategori": "organizasyon",
             "baslik_tr": "Etkinlik ulaşım planlaması",
             "baslik_en": "Event transport planning"
-        },
-        {
-            "id": "g12",
-            "sira": 12,
-            "dosya": "assets/img/road-temsili.jpg",
-            "kategori": "filo",
-            "baslik_tr": "Garajımızdan bir kare",
-            "baslik_en": "A shot from our depot"
         }
     ],
     "galeri_kategoriler": [
@@ -303,7 +320,7 @@
                 },
                 "hakkimizda_baslik": {
                     "ad": "Ana sayfa hakkımızda başlığı",
-                    "tr": "Ulaşımı bir hizmet değil, bir sorumluluk olarak görüyoruz.",
+                    "tr": "Ulaşımı bir sorumluluk olarak görüyoruz.",
                     "en": "We see transport not as a service, but as a responsibility."
                 },
                 "hizmetler_baslik": {
@@ -358,13 +375,13 @@
                 },
                 "misyon": {
                     "ad": "Misyon",
-                    "tr": "Hizmet verdiğimiz her kuruluşun ulaşım yükünü üzerinden almak; personelin, öğrencinin ve misafirin yolculuğunu güvenli, konforlu ve dakik hale getirmek.",
-                    "en": "To take the transport burden off every organisation we serve, and to make every journey — for staff, students and guests — safe, comfortable and on time."
+                    "tr": "Hizmet verdiğimiz her kurumun ulaşım sorumluluğunu eksiksiz üstleniyoruz. Personelin, öğrencinin ve misafirin her yolculuğunu güvenli, konforlu ve tam zamanında tamamlamayı taahhüt ediyoruz.",
+                    "en": "We take full responsibility for the transport of every organisation we serve. We are committed to completing every journey — for staff, students and guests — safely, comfortably and precisely on time."
                 },
                 "vizyon": {
                     "ad": "Vizyon",
-                    "tr": "Filo kalitesi, operasyon disiplini ve müşteri memnuniyetiyle ölçüldüğünde Türkiye'de kurumsal ulaşım sektörünün lider markalarından biri olmak.",
-                    "en": "To be one of the leading brands in Türkiye's corporate transport sector, measured by fleet quality, operational discipline and customer satisfaction."
+                    "tr": "Türkiye'nin kurumsal ulaşım sektöründe öncü markalarından biri olmayı hedefliyoruz; bu hedefe filo kalitesi, operasyon disiplini ve kesintisiz müşteri memnuniyetiyle ulaşıyoruz.",
+                    "en": "We aspire to be among Türkiye's leading corporate transport brands — a goal we pursue through fleet quality, operational discipline and unwavering customer satisfaction."
                 }
             }
         },

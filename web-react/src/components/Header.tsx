@@ -4,16 +4,27 @@ import { useI18n } from "@/i18n/I18nProvider";
 import { useStuckHeader } from "@/hooks/useStuckHeader";
 import { NAV } from "@/lib/nav";
 import { LangMenu } from "./LangMenu";
-import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   const { t } = useI18n();
   const stuck = useStuckHeader();
   const [navOpen, setNavOpen] = useState(false);
+  const [logo, setLogo] = useState("/assets/img/logo.png");
+  const [menu, setMenu] = useState<Record<string, { tr?: string; en?: string; href?: string; aktif?: boolean }>>({});
   const location = useLocation();
 
   // Sayfa değişince mobil menüyü kapat.
   useEffect(() => setNavOpen(false), [location.pathname, location.hash]);
+
+  useEffect(() => {
+    fetch("/assets/data/site.json", { cache: "no-cache" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (data?.marka?.logo) setLogo(`/${data.marka.logo}`);
+        if (data?.menu) setMenu(data.menu);
+      })
+      .catch(() => {});
+  }, []);
 
   // Açıkken gövde kaydırmasını kilitle + Escape ile kapat.
   useEffect(() => {
@@ -34,16 +45,8 @@ export function Header() {
           <Link className="logo" to="/" aria-label="Akdoğan Turizm">
             <img
               className="logo__img logo__img--light"
-              src="/assets/img/logo.png"
+              src={logo}
               alt="Akdoğan Turizm"
-              width={440}
-              height={148}
-            />
-            <img
-              className="logo__img logo__img--dark"
-              src="/assets/img/logo-light.png"
-              alt=""
-              aria-hidden="true"
               width={440}
               height={148}
             />
@@ -54,37 +57,27 @@ export function Header() {
             id="ana-menu"
             aria-label={t("Ana menü", "Main menu")}
           >
-            {NAV.map((item) =>
-              item.children ? (
-                <div className="nav__item" key={item.to}>
-                  <NavLink
-                    className="nav__link"
-                    to={item.to}
-                    end={item.to === "/"}
-                  >
-                    {t(item.label)}
-                  </NavLink>
-                  <div className="dropdown">
-                    <div className="dropdown__panel">
-                      {item.children.map((c) => (
-                        <Link key={c.to} to={c.to}>
-                          {t(c.label)}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
+            {NAV.map((item) => {
+              const key = item.to === "/" ? "anasayfa" : item.to.slice(1);
+              const config = menu[key];
+              if (config?.aktif === false) return null;
+              const to = config?.href
+                ? config.href.replace(/^index\.html$/, "/").replace(/\.html$/, "").replace(/^(?!\/)/, "/")
+                : item.to;
+              const label = config?.tr || config?.en
+                ? { tr: config.tr || item.label.tr, en: config.en || item.label.en }
+                : item.label;
+              return (
                 <NavLink
                   key={item.to}
-                  className="nav__link"
-                  to={item.to}
+                  className={({ isActive }) => "nav__link" + (isActive ? " is-active" : "")}
+                  to={to}
                   end={item.to === "/"}
                 >
-                  {t(item.label)}
+                  {t(label)}
                 </NavLink>
-              )
-            )}
+              );
+            })}
 
             <Link className="btn btn--primary" to="/iletisim#teklif">
               {t("Teklif Al", "Get a Quote")}
@@ -93,7 +86,6 @@ export function Header() {
 
           <div className="header__cta">
             <LangMenu />
-            <ThemeToggle />
             <Link className="btn btn--dark" to="/iletisim#teklif">
               {t("Teklif Al", "Get a Quote")}
             </Link>

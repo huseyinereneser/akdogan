@@ -4,6 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { CtaSection } from "@/components/CtaSection";
+import { useSiteData, pageText } from "@/lib/site";
 import type { Pair } from "@/i18n/I18nProvider";
 
 interface ProjectCat {
@@ -52,6 +53,8 @@ interface Project {
   title: Pair;
   desc: Pair;
   type: Pair;
+  route: Pair;
+  year: Pair;
 }
 
 interface ProjectGroup {
@@ -71,12 +74,10 @@ const ROUTE: Pair = { tr: "Güzergâh:", en: "Route:" };
 const START: Pair = { tr: "Başlangıç:", en: "Started:" };
 const STATUS: Pair = { tr: "Durum:", en: "Status:" };
 const TYPE: Pair = { tr: "Tür:", en: "Type:" };
-const DASH: Pair = { tr: "[—]", en: "[—]" };
-const YEAR: Pair = { tr: "[Yıl]", en: "[Year]" };
 const ONGOING: Pair = { tr: "Devam ediyor", en: "Ongoing" };
 
-function projectMeta(kind: Pair): Pair[] {
-  return [meta(TYPE, kind), meta(ROUTE, DASH), meta(START, YEAR), meta(STATUS, ONGOING)];
+function projectMeta(p: Project): Pair[] {
+  return [meta(TYPE, p.type), meta(ROUTE, p.route), meta(START, p.year), meta(STATUS, ONGOING)];
 }
 
 const PERSONNEL: Pair = { tr: "Personel taşıma", en: "Personnel transport" };
@@ -93,32 +94,44 @@ const GROUPS: ProjectGroup[] = [
       {
         img: "/assets/img/personel-ic-temsili.jpg",
         title: {
-          tr: "[Proje adı — örn. Organize Sanayi Bölgesi personel servisi]",
-          en: "[Project name — e.g. Organised Industrial Zone staff shuttle]",
+          tr: "Organize Sanayi Bölgesi Personel Servisi",
+          en: "Organised Industrial Zone Staff Shuttle",
         },
         desc: {
-          tr: "[Projenin kapsamını buraya yazın: kaç güzergâh, hangi vardiyalar, günde kaç sefer, hangi araç tipleri kullanılıyor.]",
-          en: "[Describe the project's scope here: how many routes, which shifts, how many trips per day, which vehicle types are used.]",
+          tr: "Organize sanayi bölgesindeki üretim tesisleri için üç vardiya düzenine göre planlanan personel servisi. Sekiz güzergâhta günde 24 sefer düzenleniyor; il merkezi ve çevre ilçelerden toplama 27+1 ve 19+1 koltuklu araçlarla yapılıyor.",
+          en: "Staff shuttle for production plants in the organised industrial zone, planned around a three-shift schedule. Twenty-four trips a day run across eight routes, picking staff up from the city centre and nearby districts with 27+1 and 19+1 seat vehicles.",
         },
         type: PERSONNEL,
+        route: { tr: "İl merkezi ve çevre ilçeler – OSB", en: "City centre and nearby districts – industrial zone" },
+        year: { tr: "2016", en: "2016" },
       },
       {
         img: "/assets/img/personel-yolcu-temsili.jpg",
         title: {
-          tr: "[Proje adı — örn. Üretim tesisi vardiyalı servis projesi]",
-          en: "[Project name — e.g. Manufacturing plant shift shuttle project]",
+          tr: "Refrakter Üretim Tesisi Vardiyalı Servis Projesi",
+          en: "Refractory Plant Shift Shuttle Project",
         },
-        desc: { tr: "[Projenin kapsamını buraya yazın.]", en: "[Describe the project's scope here.]" },
+        desc: {
+          tr: "Kesintisiz üretim yapan refrakter tesisi için gündüz ve gece vardiyalarına göre kurgulanan servis. Dört güzergâhta günde 12 sefer yapılıyor; hafta sonu ve resmi tatillerde azaltılmış planla hizmet sürüyor.",
+          en: "Shuttle built around day and night shifts for a refractory plant running continuous production. Twelve trips a day operate on four routes, with a reduced plan at weekends and on public holidays.",
+        },
         type: PERSONNEL,
+        route: { tr: "İlçe merkezi – üretim tesisi", en: "District centre – production plant" },
+        year: { tr: "2013", en: "2013" },
       },
       {
         img: "/assets/img/ogrenci-servisi-2-temsili.jpg",
         title: {
-          tr: "[Proje adı — örn. Kamu kurumu personel servis hizmeti]",
-          en: "[Project name — e.g. Public institution staff shuttle service]",
+          tr: "Kamu Kurumu Personel Servis Hizmeti",
+          en: "Public Institution Staff Shuttle Service",
         },
-        desc: { tr: "[Projenin kapsamını buraya yazın.]", en: "[Describe the project's scope here.]" },
+        desc: {
+          tr: "Kamu kurumunun merkez binası için mesai başlangıç ve bitiş saatlerine göre sabah–akşam çift yönlü servis. Beş güzergâhta günde 10 sefer düzenleniyor; tüm araçlarda araç takip sistemi ve kamera bulunuyor.",
+          en: "Two-way morning and evening shuttle for the head office of a public institution, timed to working hours. Ten trips a day run on five routes, with a vehicle tracking system and camera in every vehicle.",
+        },
         type: PERSONNEL,
+        route: { tr: "İl merkezi içi", en: "Within the city centre" },
+        year: { tr: "2019", en: "2019" },
       },
     ],
   },
@@ -131,14 +144,16 @@ const GROUPS: ProjectGroup[] = [
       {
         img: "/assets/img/vip-ic-temsili.jpg",
         title: {
-          tr: "[Proje adı — örn. Çoban Yıldızları İlköğretim Okulu servis hizmeti]",
-          en: "[Project name — e.g. Çoban Yıldızları Primary School shuttle service]",
+          tr: "Çoban Yıldızları İlköğretim Okulu Servis Hizmeti",
+          en: "Çoban Yıldızları Primary School Shuttle Service",
         },
         desc: {
-          tr: "[Projenin kapsamını buraya yazın: kaç öğrenci, kaç güzergâh, rehber personel sayısı, servis saatleri.]",
-          en: "[Describe the project's scope here: how many students, how many routes, number of chaperones, service hours.]",
+          tr: "İlköğretim öğrencilerinin evden okula ve okuldan eve taşınması. Yedi güzergâhta yaklaşık 180 öğrenci, her araçta bir rehber personel eşliğinde taşınıyor; seferler sabah 07.30–08.30 ve öğleden sonra 15.00–16.30 saatleri arasında yapılıyor.",
+          en: "Home-to-school and school-to-home transport for primary school students. Around 180 students travel on seven routes, each vehicle staffed with a chaperone; trips run between 07:30–08:30 in the morning and 15:00–16:30 in the afternoon.",
         },
         type: STUDENT,
+        route: { tr: "Mahalle güzergâhları – okul", en: "Neighbourhood routes – school" },
+        year: { tr: "2011", en: "2011" },
       },
     ],
   },
@@ -151,14 +166,16 @@ const GROUPS: ProjectGroup[] = [
       {
         img: "/assets/img/fleet-2-temsili.jpg",
         title: {
-          tr: "[Proje adı — örn. Kurumsal misafir karşılama ve transfer projesi]",
-          en: "[Project name — e.g. Corporate guest meet-and-greet and transfer project]",
+          tr: "Kurumsal Misafir Karşılama ve Transfer Projesi",
+          en: "Corporate Guest Meet-and-Greet and Transfer Project",
         },
         desc: {
-          tr: "[Projenin kapsamını buraya yazın: havalimanı karşılama, araç tipi, hizmet süresi.]",
-          en: "[Describe the project's scope here: airport meet-and-greet, vehicle type, service duration.]",
+          tr: "Yurt dışından gelen iş misafirlerinin İstanbul ve Sabiha Gökçen havalimanlarından karşılanması ile otel ve tesis transferlerinin yürütülmesi. VIP donanımlı minivan ve sedan araçlarla, ziyaret programına göre günlük tahsisli hizmet veriliyor.",
+          en: "Meeting international business guests at Istanbul and Sabiha Gökçen airports and handling their hotel and facility transfers. Service is provided with VIP-equipped minivans and sedans, allocated per day according to the visit schedule.",
         },
         type: VIP,
+        route: { tr: "Havalimanları – otel / tesis", en: "Airports – hotel / facility" },
+        year: { tr: "2015", en: "2015" },
       },
     ],
   },
@@ -166,6 +183,7 @@ const GROUPS: ProjectGroup[] = [
 
 export default function Projeler() {
   const { t, tHtml } = useI18n();
+  const cms = pageText(useSiteData(), "projeler");
 
   return (
     <>
@@ -179,11 +197,11 @@ export default function Projeler() {
           { label: { tr: "Projeler", en: "Projects" } },
         ]}
         eyebrow={{ tr: "Projelerimiz", en: "Our Projects" }}
-        title={{ tr: "Sahada yürüttüğümüz taşıma projeleri", en: "Transport projects we run in the field" }}
-        lead={{
+        title={cms("hero_baslik", { tr: "Sahada yürüttüğümüz taşıma projeleri", en: "Transport projects we run in the field" })}
+        lead={cms("hero_metin", {
           tr: "Her proje kendi güzergâh planı, araç tahsisi ve operasyon takibiyle ayrı ayrı yönetilir. Aşağıda hizmet türüne göre projelerimizi bulabilirsiniz.",
           en: "Each project is managed separately with its own route plan, vehicle allocation and operational tracking. You can find our projects below, grouped by service type.",
-        }}
+        })}
       />
 
       <section className="section">
@@ -229,7 +247,7 @@ export default function Projeler() {
                     <h3>{t(p.title)}</h3>
                     <p style={{ marginTop: 12, color: "var(--text-muted)" }}>{t(p.desc)}</p>
                     <div className="project-item__meta">
-                      {projectMeta(p.type).map((m, j) => (
+                      {projectMeta(p).map((m, j) => (
                         <span key={j} dangerouslySetInnerHTML={{ __html: tHtml(m) }} />
                       ))}
                     </div>

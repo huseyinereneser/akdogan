@@ -54,8 +54,12 @@
     sayfaMetin(d.sayfalar || {});
     galeri(d.galeri || [], d.galeri_kategoriler || []);
     seoUygula(d.seo_sayfalar || {}, d.seo || {});
-    tema(d.genel || {});
-
+    marka(d.marka || {});
+    menu(d.menu || {});
+    bolumler(d.bolumler || {});
+    genel(d.genel || {});
+    gorunum(d.gorunum || {});
+    gorseller(d.gorseller || {});
     // Dil değişince metne bağlı alanları tazele (main.js "akd:langchange" yayar)
     document.addEventListener("akd:langchange", function () {
       iletisim(d.iletisim || {}, d.sosyal || {});
@@ -63,6 +67,11 @@
       sayfaMetin(d.sayfalar || {});
       galeri(d.galeri || [], d.galeri_kategoriler || []);
       seoUygula(d.seo_sayfalar || {}, d.seo || {});
+      menu(d.menu || {});
+      bolumler(d.bolumler || {});
+      genel(d.genel || {});
+      gorunum(d.gorunum || {});
+      gorseller(d.gorseller || {});
     });
   }
 
@@ -118,6 +127,53 @@
       document.querySelectorAll('[data-cms-sosyal="' + ag + '"]').forEach(function (el) {
         el.setAttribute("href", s[ag]);
       });
+    });
+  }
+
+  function marka(m) {
+    if (!m.logo) return;
+    document.querySelectorAll('[data-cms-logo]').forEach(function (el) { el.setAttribute('src', m.logo); });
+  }
+
+  function menu(m) {
+    var dl = dil();
+    document.querySelectorAll('[data-cms-menu]').forEach(function (el) {
+      var item = m[el.getAttribute('data-cms-menu')];
+      if (!item) return;
+      if (item.href) el.setAttribute('href', item.href);
+      if (item.aktif === false) el.hidden = true;
+      var metin = dl === 'en' ? (item.en || item.tr) : item.tr;
+      if (metin) el.textContent = metin;
+    });
+  }
+
+  function bolumler(ayarlar) {
+    document.querySelectorAll('[data-cms-bolum]').forEach(function (el) {
+      var anahtar = el.getAttribute('data-cms-bolum');
+      if (Object.prototype.hasOwnProperty.call(ayarlar, anahtar)) el.hidden = ayarlar[anahtar] === false;
+    });
+  }
+
+  function genel(ayarlar) {
+    var dl = dil();
+    document.querySelectorAll('[data-cms-genel]').forEach(function (el) {
+      var alan = el.getAttribute('data-cms-genel');
+      var deger = dl === 'en' ? (ayarlar[alan + '_en'] || ayarlar[alan + '_tr']) : ayarlar[alan + '_tr'];
+      if (deger) el.textContent = deger;
+    });
+  }
+
+  function gorunum(ayarlar) {
+    var root = document.documentElement;
+    if (/^#[0-9a-f]{6}$/i.test(ayarlar.accent || '')) root.style.setProperty('--accent', ayarlar.accent);
+    if (/^#[0-9a-f]{6}$/i.test(ayarlar.accent_dark || '')) root.style.setProperty('--accent-dark', ayarlar.accent_dark);
+    if (Number.isFinite(Number(ayarlar.radius))) root.style.setProperty('--radius', Math.max(0, Math.min(24, Number(ayarlar.radius))) + 'px');
+  }
+
+  function gorseller(ayarlar) {
+    document.querySelectorAll('[data-cms-gorsel]').forEach(function (el) {
+      var yol = ayarlar[el.getAttribute('data-cms-gorsel')];
+      if (yol) el.setAttribute('src', yol);
     });
   }
 
@@ -193,11 +249,4 @@
     });
   }
 
-  /* ---- Varsayılan tema (ziyaretçi seçim yapmadıysa) ---- */
-  function tema(genel) {
-    var v = genel.varsayilan_tema;
-    if (v !== "light" && v !== "dark") return;
-    try { if (localStorage.getItem("akd-theme")) return; } catch (e) { return; }
-    document.documentElement.setAttribute("data-theme", v);
-  }
 })();

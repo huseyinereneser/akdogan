@@ -18,7 +18,7 @@ const VIDEOS: VideoCard[] = [
     meta: { tr: "[Süre] · [Yayın tarihi]", en: "[Duration] · [Publish date]" },
   },
   {
-    cover: "/assets/img/sehirici-temsili.jpg",
+    cover: "/assets/img/fleet-2-temsili.jpg",
     title: { tr: "[Video başlığı — örn. Araç filomuz]", en: "[Video title — e.g. Our vehicle fleet]" },
     meta: { tr: "[Süre] · [Yayın tarihi]", en: "[Duration] · [Publish date]" },
   },
